@@ -1,0 +1,56 @@
+{
+  "$schema": "./golden-hashes.schema.json",
+  "version": "1.0",
+  "mcp_name": "Thailand Law MCP",
+  "jurisdiction": "TH",
+  "provisions": [
+    {
+      "id": "th-hash-001",
+      "description": "Constitution of the Kingdom of Thailand B.E. 2560 (2017), Section 1 -- Thailand is one and indivisible Kingdom; stable anchor as foundational provision",
+      "upstream_url": "https://www.krisdika.go.th/librarian/getfile?sysid=758064&fid=1&subfid=0",
+      "selector_hint": "Section 1",
+      "expected_sha256": "COMPUTE_ON_FIRST_INGEST",
+      "expected_snippet": "Thailand is one and indivisible Kingdom"
+    },
+    {
+      "id": "th-hash-002",
+      "description": "Personal Data Protection Act B.E. 2562 (2019), Section 3 -- definitions of key terms including personal data, data controller, data processor, and data subject",
+      "upstream_url": "https://www.krisdika.go.th/librarian/getfile?sysid=793775&fid=1&subfid=0",
+      "selector_hint": "Section 3 - Definitions",
+      "expected_sha256": "COMPUTE_ON_FIRST_INGEST",
+      "expected_snippet": "personal data"
+    },
+    {
+      "id": "th-hash-003",
+      "description": "Computer Crime Act B.E. 2550 (2007), Section 1 -- short title and commencement of the Computer Crime Act",
+      "upstream_url": "https://www.krisdika.go.th/librarian/getfile?sysid=564700&fid=1&subfid=0",
+      "selector_hint": "Section 1 - Short title",
+      "expected_sha256": "COMPUTE_ON_FIRST_INGEST",
+      "expected_snippet": "Computer Crime Act"
+    },
+    {
+      "id": "th-hash-004",
+      "description": "Cybersecurity Act B.E. 2562 (2019), Section 1 -- short title and commencement of the Cybersecurity Act",
+      "upstream_url": "https://www.krisdika.go.th/librarian/getfile?sysid=793776&fid=1&subfid=0",
+      "selector_hint": "Section 1 - Short title",
+      "expected_sha256": "COMPUTE_ON_FIRST_INGEST",
+      "expected_snippet": "Cybersecurity Act"
+    },
+    {
+      "id": "th-hash-005",
+      "description": "Electronic Transactions Act B.E. 2544 (2001), Section 1 -- short title and commencement of the Electronic Transactions Act",
+      "upstream_url": "https://www.krisdika.go.th/librarian/getfile?sysid=449138&fid=1&subfid=0",
+      "selector_hint": "Section 1 - Short title",
+      "expected_sha256": "COMPUTE_ON_FIRST_INGEST",
+      "expected_snippet": "Electronic Transactions Act"
+    },
+    {
+      "id": "th-hash-006",
+      "description": "Civil and Commercial Code, Section 1 -- general provisions of the Civil and Commercial Code of Thailand",
+      "upstream_url": "https://www.krisdika.go.th/librarian/getfile?sysid=420780&fid=1&subfid=0",
+      "selector_hint": "Section 1 - General provisions",
+      "expected_sha256": "COMPUTE_ON_FIRST_INGEST",
+      "expected_snippet": "Civil and Commercial Code"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "$schema": "./golden-tests.schema.json",
+  "version": "1.0",
+  "mcp_name": "Thailand Law MCP",
+  "description": "Golden contract tests for the Thailand Law MCP covering PDPA, Computer Crime Act, Cybersecurity Act, Electronic Transactions Act, and Civil and Commercial Code",
+  "tests": [
+    {
+      "id": "th-001",
+      "category": "article_retrieval",
+      "description": "Retrieve Section 3 of the Personal Data Protection Act B.E. 2562 (2019) -- definitions including personal data and data controller",
+      "tool": "get_provision",
+      "input": {
+        "law_identifier": "Personal Data Protection Act B.E. 2562",
+        "article": "3"
+      },
+      "assertions": {
+        "result_not_empty": true,
+        "text_contains": ["personal data", "data controller"],
+        "fields_present": ["text", "article_number"],
+        "text_not_empty": true
+      }
+    },
+    {
+      "id": "th-002",
+      "category": "article_retrieval",
+      "description": "Retrieve Section 5 of the Computer Crime Act B.E. 2550 (2007) -- unauthorised access to a computer system",
+      "tool": "get_provision",
+      "input": {
+        "law_identifier": "Computer Crime Act B.E. 2550",
+        "article": "5"
+      },
+      "assertions": {
+        "result_not_empty": true,
+        "any_result_contains": ["computer", "access", "system"],
+        "fields_present": ["text", "article_number"],
+        "text_not_empty": true
+      }
+    },
+    {
+      "id": "th-003",
+      "category": "article_retrieval",
+      "description": "Retrieve Section 3 of the Cybersecurity Act B.E. 2562 (2019) -- definitions and scope",
+      "tool": "get_provision",
+      "input": {
+        "law_identifier": "Cybersecurity Act B.E. 2562",
+        "article": "3"
+      },
+      "assertions": {
+        "result_not_empty": true,
+        "any_result_contains": ["cybersecurity", "critical information infrastructure", "computer"],
+        "fields_present": ["text"],
+        "text_not_empty": true
+      }
+    },
+    {
+      "id": "th-004",
+      "category": "search",
+      "description": "Full-text search for Thai term for personal data returns PDPA provisions",
+      "tool": "search_legislation",
+      "input": {
+        "query": "personal data"
+      },
+      "assertions": {
+        "result_not_empty": true,
+        "min_results": 1,
+        "any_result_contains": ["Personal Data Protection Act", "personal data", "data controller"]
+      }
+    },
+    {
+      "id": "th-005",
+      "category": "search",
+      "description": "Full-text search for 'computer crime' returns Computer Crime Act provisions",
+      "tool": "search_legislation",
+      "input": {
+        "query": "computer crime"
+      },
+      "assertions": {
+        "result_not_empty": true,
+        "min_results": 1,
+        "any_result_contains": ["Computer Crime Act", "computer", "offence"]
+      }
+    },
+    {
+      "id": "th-006",
+      "category": "search",
+      "description": "Full-text search for 'electronic transaction' returns Electronic Transactions Act provisions",
+      "tool": "search_legislation",
+      "input": {
+        "query": "electronic transaction"
+      },
+      "assertions": {
+        "result_not_empty": true,
+        "min_results": 1,
+        "any_result_contains": ["Electronic Transactions Act", "electronic", "transaction", "signature"]
+      }
+    },
+    {
+      "id": "th-007",
+      "category": "citation_roundtrip",
+      "description": "Citation for PDPA Section 19 (consent requirements) includes krisdika.go.th URL pattern",
+      "tool": "get_provision",
+      "input": {
+        "law_identifier": "Personal Data Protection Act B.E. 2562",
+        "article": "19"
+      },
+      "assertions": {
+        "result_not_empty": true,
+        "citation_url_pattern": "krisdika\\.go\\.th",
+        "text_not_empty": true
+      }
+    },
+    {
+      "id": "th-008",
+      "category": "citation_roundtrip",
+      "description": "Citation for Electronic Transactions Act Section 2 includes official identifier",
+      "tool": "get_provision",
+      "input": {
+        "law_identifier": "Electronic Transactions Act B.E. 2544",
+        "article": "2"
+      },
+      "assertions": {
+        "result_not_empty": true,
+        "fields_present": ["text"],
+        "text_not_empty": true
+      }
+    },
+    {
+      "id": "th-009",
+      "category": "eu_cross_reference",
+      "description": "PDPA cross-reference to GDPR -- Thailand's PDPA was modeled on the EU GDPR",
+      "tool": "get_provision_eu_basis",
+      "input": {
+        "law_identifier": "Personal Data Protection Act B.E. 2562"
+      },
+      "assertions": {
+        "result_not_empty": true,
+        "any_result_contains": ["GDPR", "General Data Protection Regulation", "2016/679", "data protection"]
+      }
+    },
+    {
+      "id": "th-010",
+      "category": "eu_cross_reference",
+      "description": "Cybersecurity Act cross-reference to international cybersecurity frameworks",
+      "tool": "get_provision_eu_basis",
+      "input": {
+        "law_identifier": "Cybersecurity Act B.E. 2562"
+      },
+      "assertions": {
+        "result_not_empty": true,
+        "any_result_contains": ["NIS", "cybersecurity", "critical infrastructure", "ASEAN"]
+      }
+    },
+    {
+      "id": "th-011",
+      "category": "negative_test",
+      "description": "Non-existent Thai Act returns graceful error or empty result",
+      "tool": "get_provision",
+      "input": {
+        "law_identifier": "Fictional Space Tourism Act B.E. 2599",
+        "article": "1"
+      },
+      "assertions": {
+        "handles_gracefully": true
+      }
+    },
+    {
+      "id": "th-012",
+      "category": "negative_test",
+      "description": "Malformed section number returns graceful error or empty result",
+      "tool": "get_provision",
+      "input": {
+        "law_identifier": "Personal Data Protection Act B.E. 2562",
+        "article": "999ZZZ-INVALID"
+      },
+      "assertions": {
+        "handles_gracefully": true
+      }
+    }
+  ]
+}

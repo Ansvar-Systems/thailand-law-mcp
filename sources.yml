@@ -1,0 +1,65 @@
+# sources.yml
+schema_version: "1.0"
+mcp_name: "Thailand Law MCP"
+jurisdiction: "TH"
+
+sources:
+  - name: "Office of the Council of State (Krisdika)"
+    authority: "Office of the Council of State, Kingdom of Thailand"
+    official_portal: "https://www.krisdika.go.th"
+    canonical_identifier: "N/A (Thai legislation identified by Act title, Buddhist Era year, and Royal Gazette reference)"
+    retrieval_method: "HTML_SCRAPE"
+    api_documentation: "N/A (structured web interface with some machine-readable pages)"
+    update_frequency: "weekly"
+    last_ingested: "PENDING_FIRST_INGEST"
+    license_or_terms:
+      type: "Government Open Data"
+      url: "https://www.krisdika.go.th"
+      summary: "Official repository of Thai laws maintained by the Office of the Council of State; government legislation is publicly accessible; English translations provided for major statutes but are unofficial"
+    coverage:
+      scope: "All Acts of Parliament (Phra Ratchabanyat), Royal Decrees (Phra Ratchakritsadika), Ministerial Regulations, Emergency Decrees, and the Constitution of the Kingdom of Thailand; English translations available for major legislation"
+      limitations: "English translations are unofficial and may lag behind Thai originals; some subsidiary legislation may not have English translations; historical legislation before digitisation may be incomplete; amendments may not be immediately reflected in consolidated versions"
+    languages:
+      - "th"
+      - "en"
+
+  - name: "Royal Thai Government Gazette (Ratchakitcha)"
+    authority: "Cabinet Secretariat, Office of the Prime Minister"
+    official_portal: "https://ratchakitcha.soc.go.th"
+    canonical_identifier: "N/A (gazette notices identified by volume, section, and date of publication)"
+    retrieval_method: "PDF"
+    api_documentation: "N/A"
+    update_frequency: "weekly"
+    last_ingested: "PENDING_FIRST_INGEST"
+    license_or_terms:
+      type: "Government Publication"
+      url: "https://ratchakitcha.soc.go.th"
+      summary: "Official Royal Thai Government Gazette; all legislation must be published in the Gazette to take legal effect; publicly accessible government publication"
+    coverage:
+      scope: "Royal Thai Government Gazette including Acts, Royal Decrees, Ministerial Regulations, Notifications, and Announcements across all sections (Kor, Khor, Ngor, special sections)"
+      limitations: "PDF format requires OCR/parsing for structured data extraction; Thai language only for gazette entries; historical gazettes may be incomplete; gazette supplements published separately"
+    languages:
+      - "th"
+
+data_freshness:
+  automated_checks: true
+  check_frequency: "weekly"
+  last_verified: "PENDING_FIRST_INGEST"
+
+# Notes:
+# - Thailand uses a civil law legal system influenced by continental European (primarily German
+#   and French) legal traditions, with elements of English common law
+# - The Office of the Council of State (Krisdika) is the principal legal advisory body and
+#   maintains the official repository of Thai legislation
+# - Thailand uses the Buddhist Era (B.E.) calendar for legislation dating:
+#   B.E. year = CE year + 543 (e.g., 2019 CE = B.E. 2562)
+# - The Personal Data Protection Act B.E. 2562 (2019) was modeled on the EU GDPR; full
+#   enforcement began 1 June 2022 after multiple delays
+# - The Personal Data Protection Committee (PDPC) is the regulator established under the PDPA
+# - The Computer Crime Act B.E. 2550 (2007), amended B.E. 2560 (2017), covers cybercrimes
+#   and content regulation
+# - The Cybersecurity Act B.E. 2562 (2019) establishes the National Cybersecurity Committee
+#   (NCSC) and framework for critical information infrastructure protection
+# - Thai is the legally binding language; English translations are available for major laws
+#   but are not official and may contain inaccuracies
+# - The legal language includes both formal Thai and technical legal terminology
