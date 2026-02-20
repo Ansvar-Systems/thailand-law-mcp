@@ -1,0 +1,128 @@
+{
+  "id": "pdpa-be2562",
+  "type": "statute",
+  "title_th": "พระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562",
+  "title_en": "Personal Data Protection Act B.E. 2562 (2019)",
+  "short_name": "PDPA 2019",
+  "status": "in_force",
+  "be_year": 2562,
+  "ce_year": 2019,
+  "issued_date": "2019-05-27",
+  "in_force_date": "2022-06-01",
+  "url": "https://www.krisdika.go.th/librarian/getfile?sysid=793775&fid=1&subfid=0",
+  "description": "Thailand's comprehensive personal data protection law, modeled on the EU GDPR. Establishes rights of data subjects, obligations of data controllers and processors, and the Personal Data Protection Committee (PDPC) as the regulatory authority. Full enforcement began 1 June 2022.",
+  "provisions": [
+    {
+      "provision_ref": "s1",
+      "section": "1",
+      "title": "Short title",
+      "content": "Section 1. This Act shall be called the Personal Data Protection Act, B.E. 2562 (2019).",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s2",
+      "section": "2",
+      "title": "Commencement",
+      "content": "Section 2. This Act shall come into force after the lapse of one year from the date of its publication in the Government Gazette, except for the provisions concerning the Personal Data Protection Committee, the Office of the Personal Data Protection Committee, penalties, and provisions on data controller and data processor obligations and data subject rights which shall come into force on the date prescribed by the Royal Decree.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s3",
+      "section": "3",
+      "title": "Definitions",
+      "content": "Section 3. In this Act: 'personal data' means any information relating to a person which enables the identification of such person, whether directly or indirectly, but not including the information of a deceased person in particular; 'data controller' means a person or juristic person having the power and duties to make decisions regarding the collection, use, or disclosure of personal data; 'data processor' means a person or juristic person which operates in relation to the collection, use, or disclosure of personal data pursuant to the orders given by or on behalf of a data controller, whereby such person or juristic person is not the data controller; 'data subject' means a natural person who is the owner of the personal data; 'sensitive data' means personal data pertaining to racial, ethnic origin, political opinions, cult, religious or philosophical beliefs, sexual behavior, criminal records, health data, disability, trade union information, genetic data, biometric data, or of any data which may affect the data subject in the same manner as prescribed by the Personal Data Protection Committee.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s4",
+      "section": "4",
+      "title": "Scope of application",
+      "content": "Section 4. This Act shall not apply to: (1) the collection, use, or disclosure of personal data for personal benefit or household activities only; (2) the operations of government agencies having the duties to maintain State security, including financial security of the State, or to maintain public safety, including the duties pertaining to the prevention and suppression of money laundering, forensic science, or cybersecurity; (3) the House of Representatives, the Senate, the Parliament, and the committees appointed by the House of Representatives, the Senate, or the Parliament in the performance of duties under the Constitution; (4) the trial and adjudication of the courts, and the operations of officials in court proceedings and enforcement of judgments, and the operations of officials in legal proceedings; (5) the operations of the credit bureau and its members pursuant to the Credit Bureau Act; (6) the collection, use, or disclosure of personal data by mass media, fine arts, or literary works only for the benefit of public information, artistic expressions, or academic activities in accordance with the ethical standards of such profession or for the public interest only.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s5",
+      "section": "5",
+      "title": "Territorial scope",
+      "content": "Section 5. This Act shall apply to the collection, use, or disclosure of personal data by a data controller or data processor which is in Thailand, regardless of whether such collection, use, or disclosure is made in or outside the Kingdom. This Act shall also apply to a data controller or data processor which is outside the Kingdom where the activities are related to: (1) the offering of goods or services to data subjects who are in Thailand, irrespective of whether a payment is made by the data subject; (2) the monitoring of the behavior of data subjects where such behavior takes place in Thailand.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s6",
+      "section": "6",
+      "title": "Lawful basis for collection",
+      "content": "Section 6. The data controller shall not collect, use, or disclose personal data unless the data subject gives consent prior to or at the time of such collection, use, or disclosure, except as otherwise provided by this Act or other laws.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s19",
+      "section": "19",
+      "title": "Consent requirements",
+      "content": "Section 19. The data controller shall not collect personal data without the consent of the data subject, except where: (1) it is for the achievement of the purposes relating to the preparation of historical documents or archives for public interest, or relating to research or statistics in which the data controller has provided suitable protection measures to protect the rights and freedoms of data subjects in accordance with this Act; (2) it is for the prevention or suppression of danger to a person's life, body, or health; (3) it is necessary for the performance of a contract to which the data subject is a party, or in order to take steps at the request of the data subject prior to entering into a contract; (4) it is necessary for the performance of a task carried out in the public interest by the data controller, or in the exercise of official authority vested in the data controller; (5) it is necessary for the purposes of the legitimate interests of the data controller or of a third party, except where such interests are overridden by the fundamental rights of the data subject in his or her personal data; (6) it is compliance with the law.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s26",
+      "section": "26",
+      "title": "Sensitive personal data",
+      "content": "Section 26. The data controller shall not collect sensitive personal data without the explicit consent of the data subject, except where: (1) it is for the prevention or suppression of danger to a person's life, body, or health, where the data subject is incapable of giving consent by whatever reason; (2) it is the carrying out of the activities with appropriate safeguards as prescribed by the Committee relating to the legitimate activities carried out by a foundation, association, or any not-for-profit body with a political, philosophical, religious, or trade union aim, on condition that the collection, use, or disclosure relates solely to the members or to former members of the body or to persons who have regular contact with it in connection with its purposes, and that the personal data is not disclosed outside that body without the consent of the data subjects.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s30",
+      "section": "30",
+      "title": "Right of access",
+      "content": "Section 30. The data subject shall have the right to request access to and obtain a copy of personal data relating to him or her which is under the responsibility of the data controller, or to request the disclosure of the acquisition of his or her personal data where the data subject did not give consent.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s31",
+      "section": "31",
+      "title": "Right to data portability",
+      "content": "Section 31. Where the data controller has made the personal data in a format which is readable or commonly used by way of tools or equipment which function automatically, including a personal data which may be used or disclosed through automated means, the data subject shall have the right: (1) to request the data controller to obtain personal data in such format; (2) where personal data is transferable by automatic means, to request the data controller to send or transfer data in such format to another data controller directly, unless it is technically impossible to do so.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s33",
+      "section": "33",
+      "title": "Right to erasure",
+      "content": "Section 33. The data subject shall have the right to request the data controller to erase or destroy the personal data or cause such personal data to become unidentifiable, where: (1) the personal data is no longer necessary in relation to the purposes for which it was collected, used, or disclosed; (2) the data subject withdraws his or her consent and the data controller has no legal ground for the collection, use, or disclosure of such personal data; (3) the data subject objects to the collection, use, or disclosure of such personal data; (4) the personal data was unlawfully collected, used, or disclosed.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s37",
+      "section": "37",
+      "title": "Data controller obligations",
+      "content": "Section 37. The data controller shall: (1) provide appropriate security measures to prevent unauthorized or unlawful loss, access, use, alteration, correction, or disclosure of personal data, and review such measures when necessary or when technology changes in order to have effective and appropriate security measures; (2) take action to prevent any person using or disclosing personal data without authority to do so; (3) arrange a system for the elimination or destruction of personal data upon expiry of the retention period or which is no longer relevant or exceeding the purposes of the collection.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s39",
+      "section": "39",
+      "title": "Record of processing activities",
+      "content": "Section 39. The data controller shall maintain records of data processing activities as follows: (1) the personal data collected; (2) the purposes of the collection; (3) details of the data controller; (4) the retention period of the personal data; (5) the rights and methods of access to personal data; (6) the use or disclosure of personal data which is an exception to the consent requirement; (7) a refusal of or objection to a request, including the reasons therefor.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s41",
+      "section": "41",
+      "title": "Data protection officer",
+      "content": "Section 41. The data controller and data processor shall designate a data protection officer in the following cases: (1) the data controller or data processor is a government agency; (2) the activities of the data controller or data processor require regular and systematic monitoring of the personal data or system due to their large quantity of personal data; (3) the core activities of the data controller or data processor consist of the collection, use, or disclosure of sensitive data.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s77",
+      "section": "77",
+      "title": "Administrative fines",
+      "content": "Section 77. The Expert Committee shall have the power to impose administrative fines not exceeding five million Baht upon a data controller or data processor who violates or fails to comply with the provisions of this Act.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s90",
+      "section": "90",
+      "title": "Criminal penalties",
+      "content": "Section 90. Any data controller who violates Section 27 paragraph one or uses or discloses sensitive personal data in violation of Section 26 without the consent of the data subject, for the purpose of causing harm to the data subject, shall be liable to imprisonment for a term not exceeding six months, or to a fine not exceeding five hundred thousand Baht, or to both.",
+      "language": "en"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "id": "ccc-be2468",
+  "type": "statute",
+  "title_th": "ประมวลกฎหมายแพ่งและพาณิชย์",
+  "title_en": "Civil and Commercial Code",
+  "short_name": "CCC",
+  "status": "in_force",
+  "be_year": 2468,
+  "ce_year": 1925,
+  "issued_date": "1925-01-01",
+  "in_force_date": "1925-01-01",
+  "url": "https://www.krisdika.go.th/librarian/getfile?sysid=420780&fid=1&subfid=0",
+  "description": "Thailand's principal civil law code, comprising six books covering general principles, obligations, specific contracts, property, family, and succession. Originally enacted in 1925, it has been continuously amended. Covers contracts, torts, property rights, and commercial transactions.",
+  "provisions": [
+    {
+      "provision_ref": "s1",
+      "section": "1",
+      "title": "General provisions",
+      "content": "Section 1. This Code shall be called the Civil and Commercial Code.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s2",
+      "section": "2",
+      "title": "Sources of law",
+      "content": "Section 2. Where there is no provision of law applicable to any case, the case shall be decided in accordance with the local custom; if there is no such custom, by analogy to the nearest provision of law; and if such provision does not exist either, by the general principles of law.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s4",
+      "section": "4",
+      "title": "Exercise of rights",
+      "content": "Section 4. A right shall be exercised honestly and in good faith. The exercise of a right which expressly has for its purpose the injury of another person is unlawful.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s5",
+      "section": "5",
+      "title": "Presumption of good faith",
+      "content": "Section 5. Every person is presumed to exercise his right honestly and in good faith.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s150",
+      "section": "150",
+      "title": "Void juristic acts",
+      "content": "Section 150. An act is void if its object is expressly prohibited by law or is impossible, or is contrary to public order or good morals.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s194",
+      "section": "194",
+      "title": "Formation of contract",
+      "content": "Section 194. A contract is made by the acceptance of an offer. The offer or the acceptance may be express or implied.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s420",
+      "section": "420",
+      "title": "Wrongful acts (Torts)",
+      "content": "Section 420. A person who, wilfully or negligently, unlawfully injures the life, body, health, liberty, property, or any right of another person is said to commit a wrongful act and is bound to make compensation therefor.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s421",
+      "section": "421",
+      "title": "Statutory violation",
+      "content": "Section 421. The exercise of a right which can only have the purpose of causing injury to another person is unlawful.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s438",
+      "section": "438",
+      "title": "Compensation for wrongful acts",
+      "content": "Section 438. The court shall determine the manner and the extent of the compensation according to the circumstances of the case and the gravity of the wrongful act. Compensation may include restitution of the property or payment of the value thereof, as well as damages for any injury caused.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s680",
+      "section": "680",
+      "title": "Agency",
+      "content": "Section 680. The provisions of this Part shall apply to cases where an agent undertakes to act for his principal in legal transactions or other acts with third persons.",
+      "language": "en"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "id": "eta-be2544",
+  "type": "statute",
+  "title_th": "พระราชบัญญัติว่าด้วยธุรกรรมทางอิเล็กทรอนิกส์ พ.ศ. 2544",
+  "title_en": "Electronic Transactions Act B.E. 2544 (2001)",
+  "short_name": "ETA 2001",
+  "status": "in_force",
+  "be_year": 2544,
+  "ce_year": 2001,
+  "issued_date": "2001-12-02",
+  "in_force_date": "2002-04-03",
+  "url": "https://www.krisdika.go.th/librarian/getfile?sysid=449138&fid=1&subfid=0",
+  "description": "Thailand's foundational law governing electronic transactions, electronic signatures, and electronic records. Based on the UNCITRAL Model Law on Electronic Commerce. Provides legal recognition to electronic data messages and electronic signatures, and establishes the Electronic Transactions Commission.",
+  "provisions": [
+    {
+      "provision_ref": "s1",
+      "section": "1",
+      "title": "Short title",
+      "content": "Section 1. This Act shall be called the Electronic Transactions Act, B.E. 2544 (2001).",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s2",
+      "section": "2",
+      "title": "Commencement",
+      "content": "Section 2. This Act shall come into force after the lapse of one hundred and twenty days from the date of its publication in the Government Gazette.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s3",
+      "section": "3",
+      "title": "Scope",
+      "content": "Section 3. This Act shall not apply to: (1) transactions relating to family affairs and succession; (2) other transactions as prescribed in the Royal Decree.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s4",
+      "section": "4",
+      "title": "Definitions",
+      "content": "Section 4. In this Act: 'electronic' means the application of electrical, electromagnetic, optical, magnetic, or other similar technologies; 'electronic transaction' means a transaction conducted by electronic means; 'data message' means information generated, sent, received, stored, or processed by electronic means, including electronic data interchange, electronic mail, telegram, telex, or telecopy; 'electronic signature' means letters, characters, numbers, sounds, or other symbols created in electronic form and affixed to a data message for the purpose of identifying the person who is related to the data message and to indicate that such person approves the information contained in the data message; 'electronic record' means a record created, sent, received, stored, or processed by electronic means.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s7",
+      "section": "7",
+      "title": "Legal recognition of data messages",
+      "content": "Section 7. Information shall not be denied legal effect, validity, or enforceability solely on the ground that it is in the form of a data message.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s8",
+      "section": "8",
+      "title": "Writing requirement",
+      "content": "Section 8. In the case where the law requires that any transaction must be made in writing, or where the party is required to have documentary evidence, if the information is generated in the form of a data message which is accessible and usable for subsequent reference, the information shall be deemed to satisfy the requirement.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s9",
+      "section": "9",
+      "title": "Electronic signatures",
+      "content": "Section 9. In the case where the law requires that any transaction must bear the signature of any person, or where the law provides certain consequences for the absence of a signature, if the following conditions are satisfied, it shall be deemed that the data message bears the electronic signature: (1) the method used is capable of identifying the signatory and indicating the signatory's approval of the information contained in the data message; (2) the method used is reliable and appropriate for the purpose for which the data message is generated and sent, having regard to all relevant circumstances, including any agreement between the parties.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s10",
+      "section": "10",
+      "title": "Evidentiary weight",
+      "content": "Section 10. In assessing the evidentiary weight of a data message, regard shall be had to the reliability of the manner in which the data message was generated, stored, or communicated, to the reliability of the manner in which the integrity of the information was maintained, to the manner in which its originator was identified, and to any other relevant factor.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s11",
+      "section": "11",
+      "title": "Retention of data messages",
+      "content": "Section 11. In the case where the law requires that certain documents or information be retained, the requirement shall be deemed to have been satisfied by retaining the information in the form of a data message, provided that: (1) the information contained in the data message is accessible and usable for subsequent reference; (2) the data message is retained in the format in which it was generated, sent, or received, or in a format which can be demonstrated to represent accurately the information generated, sent, or received; (3) the information, if any, as enables the identification of the origin and destination of a data message and the date and time when it was sent or received, is retained.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s13",
+      "section": "13",
+      "title": "Formation of contracts",
+      "content": "Section 13. An offer and the acceptance of an offer in the formation of a contract may be expressed in the form of data messages. In such case, the contract shall not be denied legal effect, validity, or enforceability solely on the ground that data messages are used for that purpose.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s23",
+      "section": "23",
+      "title": "Reliable electronic signatures",
+      "content": "Section 23. An electronic signature which is created during the operational period of the certificate and which can be verified by reference to the public key listed in the certificate shall be deemed to be a reliable electronic signature.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s25",
+      "section": "25",
+      "title": "Certification service provider",
+      "content": "Section 25. A person who intends to provide services as a certification service provider for the purpose of supporting electronic signatures shall apply for a licence from the Electronic Transactions Commission. The Electronic Transactions Commission shall have the power to prescribe the rules, procedures, and conditions for the application and the granting of the licence.",
+      "language": "en"
+    }
+  ]
+}

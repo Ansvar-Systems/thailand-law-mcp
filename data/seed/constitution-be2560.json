@@ -1,0 +1,72 @@
+{
+  "id": "constitution-be2560",
+  "type": "statute",
+  "title_th": "รัฐธรรมนูญแห่งราชอาณาจักรไทย พ.ศ. 2560",
+  "title_en": "Constitution of the Kingdom of Thailand B.E. 2560 (2017)",
+  "short_name": "Constitution 2017",
+  "status": "in_force",
+  "be_year": 2560,
+  "ce_year": 2017,
+  "issued_date": "2017-04-06",
+  "in_force_date": "2017-04-06",
+  "url": "https://www.krisdika.go.th/librarian/getfile?sysid=758064&fid=1&subfid=0",
+  "description": "The Constitution of the Kingdom of Thailand, promulgated in B.E. 2560 (2017). Establishes the fundamental framework of government, separation of powers, fundamental rights and liberties, and the rule of law. Includes provisions on privacy rights relevant to data protection.",
+  "provisions": [
+    {
+      "provision_ref": "s1",
+      "section": "1",
+      "title": "Sovereignty and territorial integrity",
+      "content": "Section 1. Thailand is one and indivisible Kingdom.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s2",
+      "section": "2",
+      "title": "Form of government",
+      "content": "Section 2. Thailand adopts a democratic regime of government with the King as Head of State.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s3",
+      "section": "3",
+      "title": "Sovereignty of the people",
+      "content": "Section 3. The sovereign power belongs to the Thai people. The King as Head of State shall exercise such power through the National Assembly, the Council of Ministers, and the Courts in accordance with the provisions of this Constitution.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s25",
+      "section": "25",
+      "title": "Rights and liberties",
+      "content": "Section 25. The rights and liberties of the Thai people, in addition to those provided specifically in this Constitution, shall include rights and liberties recognised by constitutional conventions and international law obligations already binding on Thailand, to the extent that such rights and liberties are not contrary to, or inconsistent with, this Constitution.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s32",
+      "section": "32",
+      "title": "Right to privacy",
+      "content": "Section 32. A person shall enjoy the right to privacy, dignity, reputation, and family. An act violating or affecting the right of a person under paragraph one, or the exploitation of personal information in any manner whatsoever, shall not be permitted except by virtue of a provision of law enacted only to the extent of necessity of public interest.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s34",
+      "section": "34",
+      "title": "Freedom of expression",
+      "content": "Section 34. A person shall enjoy the liberty to express opinions, make speeches, write, print, publicise, and express by other means. The restriction on such liberty shall not be imposed, except by virtue of the provisions of the law specifically enacted for the purpose of maintaining the security of the State, protecting the rights or liberties of other persons, maintaining public order or good morals, or protecting the health of the people.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s36",
+      "section": "36",
+      "title": "Freedom of communication",
+      "content": "Section 36. A person shall enjoy the liberty of communication by any lawful means. The censorship, detention, or disclosure of information communicated between persons, including any other act disclosing a statement in the communication between persons, shall not be permitted except by virtue of the provisions of the law specifically enacted for maintaining the security of the State or maintaining public order or good morals.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s56",
+      "section": "56",
+      "title": "State obligations for public services",
+      "content": "Section 56. The State shall ensure public utility services and shall provide efficient and universal access to such services. The State shall monitor and regulate the provision of public utility services for the benefit of consumers, in terms of quality, pricing, and equitable access.",
+      "language": "en"
+    }
+  ]
+}

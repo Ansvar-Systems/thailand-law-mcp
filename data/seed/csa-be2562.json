@@ -1,0 +1,86 @@
+{
+  "id": "csa-be2562",
+  "type": "statute",
+  "title_th": "พระราชบัญญัติการรักษาความมั่นคงปลอดภัยไซเบอร์ พ.ศ. 2562",
+  "title_en": "Cybersecurity Act B.E. 2562 (2019)",
+  "short_name": "CSA 2019",
+  "status": "in_force",
+  "be_year": 2562,
+  "ce_year": 2019,
+  "issued_date": "2019-05-27",
+  "in_force_date": "2019-05-28",
+  "url": "https://www.krisdika.go.th/librarian/getfile?sysid=793776&fid=1&subfid=0",
+  "description": "Thailand's cybersecurity framework law establishing the National Cybersecurity Committee (NCSC), the Cybersecurity Regulating Committee (CRC), and the Office of the National Cybersecurity Committee (NCSC Office). Defines critical information infrastructure (CII) protection requirements and cybersecurity threat levels.",
+  "provisions": [
+    {
+      "provision_ref": "s1",
+      "section": "1",
+      "title": "Short title",
+      "content": "Section 1. This Act shall be called the Cybersecurity Act, B.E. 2562 (2019).",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s2",
+      "section": "2",
+      "title": "Commencement",
+      "content": "Section 2. This Act shall come into force on the day following the date of its publication in the Government Gazette.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s3",
+      "section": "3",
+      "title": "Definitions",
+      "content": "Section 3. In this Act: 'cybersecurity' means measures and actions designed to protect computer systems, computer data, and other related equipment and information from threats; 'cyber threat' means any act or action carried out through the use of a computer or computer system or programme with the objective of or for the purpose of compromising the cybersecurity of a computer system, computer data, or other related data in a manner that threatens critical information infrastructure; 'critical information infrastructure' means computer systems, computer data, or information of State agencies and private sector entities that relates to maintaining national security, public safety, national economic security, or infrastructure essential to public services which, if damaged or destroyed, would have severe impact upon national security, public safety, national economic security, or the delivery of essential public services.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s5",
+      "section": "5",
+      "title": "National Cybersecurity Committee",
+      "content": "Section 5. There shall be a National Cybersecurity Committee, referred to as the NCSC, consisting of the Prime Minister as chairperson, the Minister of Defence, the Minister of Digital Economy and Society, and other ministers and experts as appointed. The NCSC shall have the duties and powers to establish national cybersecurity policies, master plans, and strategies, as well as to approve the designation of critical information infrastructure organisations.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s10",
+      "section": "10",
+      "title": "CII organisation obligations",
+      "content": "Section 10. An organisation of critical information infrastructure shall: (1) comply with the code of practice and framework prescribed by the CRC Committee; (2) conduct a cyber risk assessment at least once a year; (3) report any incident relating to cybersecurity threats as prescribed by the CRC Committee; (4) cooperate with the NCSC Office in the prevention, management, and response to cybersecurity threats.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s20",
+      "section": "20",
+      "title": "Threat levels",
+      "content": "Section 20. Cyber threats shall be classified into the following levels: (1) non-critical cyber threat — a cyber threat which causes damage to or interference with a computer system that does not affect critical information infrastructure and does not endanger national security, public safety, or the national economy; (2) critical cyber threat — a cyber threat affecting critical information infrastructure causing significant widespread damage or interference with essential services; (3) crisis-level cyber threat — a cyber threat affecting critical information infrastructure that is so severe as to endanger national security, affect significant numbers of citizens, or disrupt essential services to a serious extent requiring emergency response.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s22",
+      "section": "22",
+      "title": "Crisis-level response powers",
+      "content": "Section 22. In the case of a crisis-level cyber threat, the Secretary-General shall have the power to: (1) request computer data or a copy of computer data from any person in possession or control thereof; (2) request the cooperation of any person to monitor computer traffic data or other computer data; (3) inspect premises, computer systems, and computer data; (4) seize or freeze computer systems when there are reasonable grounds to believe that they are related to the cyber threat; (5) request the cooperation of relevant agencies to take emergency measures to address the threat. The exercise of power under paragraph one shall be in accordance with the resolution of the NCSC.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s25",
+      "section": "25",
+      "title": "Incident reporting",
+      "content": "Section 25. When any organisation of critical information infrastructure becomes aware of or has reasonable grounds to suspect the occurrence of a cyber threat, such organisation shall notify the NCSC Office without delay. The notification shall be made within the timeframe and in the form prescribed by the CRC Committee.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s66",
+      "section": "66",
+      "title": "Penalties for non-compliance",
+      "content": "Section 66. Any person who fails to comply with the measures issued under Section 22 without reasonable cause shall be punished with imprisonment for a term not exceeding one year, or a fine not exceeding twenty thousand Baht, or both.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s67",
+      "section": "67",
+      "title": "Penalties for CII organisations",
+      "content": "Section 67. An organisation of critical information infrastructure that fails to comply with the code of practice or framework prescribed under Section 10 shall be punished with a fine not exceeding two hundred thousand Baht. In the case of a continuing offence, an additional fine not exceeding ten thousand Baht per day shall be imposed.",
+      "language": "en"
+    }
+  ]
+}
