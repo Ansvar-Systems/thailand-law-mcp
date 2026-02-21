@@ -1,64 +1,86 @@
-# Thailand Law MCP
+# Thai Law MCP Server
 
-[![npm](https://img.shields.io/npm/v/@ansvar/thailand-law-mcp)](https://www.npmjs.com/package/@ansvar/thailand-law-mcp)
-[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
-[![CI](https://github.com/Ansvar-Systems/thailand-law-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/Ansvar-Systems/thailand-law-mcp/actions/workflows/ci.yml)
-[![MCP Registry](https://img.shields.io/badge/MCP-Registry-green)](https://registry.modelcontextprotocol.io/)
-[![OpenSSF Scorecard](https://img.shields.io/ossf-scorecard/github.com/Ansvar-Systems/thailand-law-mcp)](https://securityscorecards.dev/viewer/?uri=github.com/Ansvar-Systems/thailand-law-mcp)
+**The Royal Gazette alternative for the AI age.**
 
-A Model Context Protocol (MCP) server providing comprehensive access to Thai legislation, including the Personal Data Protection Act (PDPA), Computer Crime Act, Cybersecurity Act, Electronic Transactions Act, and Civil and Commercial Code with full-text search.
+[![npm version](https://badge.fury.io/js/%40ansvar/thailand-law-mcp.svg)](https://www.npmjs.com/package/@ansvar/thailand-law-mcp)
+[![MCP Registry](https://img.shields.io/badge/MCP-Registry-blue)](https://registry.modelcontextprotocol.io)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![GitHub stars](https://img.shields.io/github/stars/Ansvar-Systems/Thailand-law-mcp?style=social)](https://github.com/Ansvar-Systems/Thailand-law-mcp)
+[![CI](https://github.com/Ansvar-Systems/Thailand-law-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/Ansvar-Systems/Thailand-law-mcp/actions/workflows/ci.yml)
 
-## Deployment Tier
+Query **Thai legislation** -- covering data protection, cybersecurity, corporate law, and more -- directly from Claude, Cursor, or any MCP-compatible client.
 
-**SMALL** -- Single tier, bundled SQLite database shipped with the npm package.
+If you're building legal tech, compliance tools, or doing Thai legal research, this is your verified reference database.
 
-**Estimated database size:** ~60-120 MB (full corpus of Thai federal legislation with English translations)
+Built by [Ansvar Systems](https://ansvar.eu) -- Stockholm, Sweden
 
-## Key Legislation Covered
+---
 
-| Act | Year (B.E. / CE) | Significance |
-|-----|-------------------|-------------|
-| **Personal Data Protection Act (PDPA)** | B.E. 2562 / 2019 | Comprehensive data protection law modeled on EU GDPR; full enforcement from 1 June 2022; establishes the PDPC |
-| **Computer Crime Act** | B.E. 2550 / 2007 (amended B.E. 2560 / 2017) | Criminalises unauthorised computer access, data interference, and content offences |
-| **Cybersecurity Act** | B.E. 2562 / 2019 | Framework for critical information infrastructure protection; establishes the National Cybersecurity Committee (NCSC) |
-| **Electronic Transactions Act** | B.E. 2544 / 2001 | Legal recognition of electronic transactions, electronic signatures, and electronic documents |
-| **Civil and Commercial Code** | B.E. 2468 / 1925 (amended) | Core civil law framework including contract, tort, and relevant privacy provisions |
-| **Constitution of the Kingdom of Thailand** | B.E. 2560 / 2017 | Supreme law; includes provisions on rights and liberties |
+## Why This Exists
 
-## Regulatory Context
+Thai legal research is scattered across official government databases, commercial legal platforms, and institutional archives. Whether you're:
+- A **lawyer** validating citations in a brief or contract
+- A **compliance officer** checking if a statute is still in force
+- A **legal tech developer** building tools on Thai law
+- A **researcher** tracing legislative history
 
-- **Data Protection Supervisory Authority:** Personal Data Protection Committee (PDPC), established under the PDPA B.E. 2562
-- **Cybersecurity Regulator:** National Cybersecurity Committee (NCSC), established under the Cybersecurity Act B.E. 2562
-- **Thailand's PDPA** was modeled on the EU GDPR; full enforcement began 1 June 2022 after multiple delays from the original 2020 deadline
-- Thailand uses the **Buddhist Era (B.E.)** calendar for legislation: B.E. year = CE year + 543
-- Thai is the legally binding language; English translations are available for major laws but are unofficial
-- Thailand is a member of ASEAN and participates in the ASEAN Framework on Personal Data Protection
-- The Computer Crime Act was amended in 2017 to strengthen enforcement and expand content regulation provisions
+...you shouldn't need dozens of browser tabs and manual PDF cross-referencing. Ask Claude. Get the exact provision. With context.
 
-## Data Sources
+This MCP server makes Thai law **searchable, cross-referenceable, and AI-readable**.
 
-| Source | Authority | Method | Update Frequency | License | Coverage |
-|--------|-----------|--------|-----------------|---------|----------|
-| [Office of the Council of State (Krisdika)](https://www.krisdika.go.th) | Office of the Council of State | HTML Scrape | Weekly | Government Open Data | All Acts, Royal Decrees, Ministerial Regulations, English translations |
-| [Royal Thai Government Gazette](https://ratchakitcha.soc.go.th) | Cabinet Secretariat | PDF | Weekly | Government Publication | Official gazette including Acts, notifications, announcements |
+---
 
-> Full provenance metadata: [`sources.yml`](./sources.yml)
+## Quick Start
 
-## Installation
+### Use Remotely (No Install Needed)
 
-```bash
-npm install -g @ansvar/thailand-law-mcp
+> Connect directly to the hosted version -- zero dependencies, nothing to install.
+
+**Endpoint:** `https://thailand-law-mcp.vercel.app/mcp`
+
+| Client | How to Connect |
+|--------|---------------|
+| **Claude.ai** | Settings > Connectors > Add Integration > paste URL |
+| **Claude Code** | `claude mcp add thailand-law --transport http https://thailand-law-mcp.vercel.app/mcp` |
+| **Claude Desktop** | Add to config (see below) |
+| **GitHub Copilot** | Add to VS Code settings (see below) |
+
+**Claude Desktop** -- add to `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "thailand-law": {
+      "type": "url",
+      "url": "https://thailand-law-mcp.vercel.app/mcp"
+    }
+  }
+}
 ```
 
-## Usage
+**GitHub Copilot** -- add to VS Code `settings.json`:
 
-### As stdio MCP server
-
-```bash
-thailand-law-mcp
+```json
+{
+  "github.copilot.chat.mcp.servers": {
+    "thailand-law": {
+      "type": "http",
+      "url": "https://thailand-law-mcp.vercel.app/mcp"
+    }
+  }
+}
 ```
 
-### In Claude Desktop / MCP client configuration
+### Use Locally (npm)
+
+```bash
+npx @ansvar/thailand-law-mcp
+```
+
+**Claude Desktop** -- add to `claude_desktop_config.json`:
+
+**macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+**Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
 
 ```json
 {
@@ -71,73 +93,245 @@ thailand-law-mcp
 }
 ```
 
-## Available Tools
+**Cursor / VS Code:**
 
-| Tool | Description |
-|------|-------------|
-| `get_provision` | Retrieve a specific section/article from a Thai Act |
-| `search_legislation` | Full-text search across all Thai legislation |
-| `get_provision_eu_basis` | Cross-reference lookup for international framework relationships (GDPR, ASEAN, etc.) |
-
-## Development
-
-```bash
-# Install dependencies
-npm install
-
-# Build
-npm run build
-
-# Run tests
-npm test
-
-# Run contract tests
-npm run test:contract
-
-# Run all validation
-npm run validate
-
-# Build database from sources
-npm run build:db
-
-# Start server
-npm start
+```json
+{
+  "mcp.servers": {
+    "thailand-law": {
+      "command": "npx",
+      "args": ["-y", "@ansvar/thailand-law-mcp"]
+    }
+  }
+}
 ```
-
-## Contract Tests
-
-This MCP includes 12 golden contract tests covering:
-- 3 article retrieval tests (PDPA, Computer Crime Act, Cybersecurity Act)
-- 3 search tests (personal data, computer crime, electronic transaction)
-- 2 citation roundtrip tests (official krisdika.go.th URL patterns)
-- 2 cross-reference tests (GDPR relationship, ASEAN/NIS framework)
-- 2 negative tests (non-existent Act, malformed section)
-
-Run with: `npm run test:contract`
-
-## Buddhist Era (B.E.) Date Reference
-
-Thailand uses the Buddhist Era calendar for legislation. Quick conversion:
-
-| B.E. Year | CE Year | Key Law |
-|-----------|---------|---------|
-| B.E. 2562 | 2019 | PDPA, Cybersecurity Act |
-| B.E. 2560 | 2017 | Computer Crime Act (amendment), Constitution |
-| B.E. 2550 | 2007 | Computer Crime Act (original) |
-| B.E. 2544 | 2001 | Electronic Transactions Act |
-
-**Formula:** CE year = B.E. year - 543
-
-## Security
-
-See [SECURITY.md](./SECURITY.md) for vulnerability disclosure policy.
-
-Report data errors: [Open an issue](https://github.com/Ansvar-Systems/thailand-law-mcp/issues/new?template=data-error.md)
-
-## License
-
-Apache-2.0 -- see [LICENSE](./LICENSE)
 
 ---
 
-Built by [Ansvar Systems](https://ansvar.eu) -- Cybersecurity compliance through AI-powered analysis.
+## Example Queries
+
+Once connected, just ask naturally:
+
+- *"What does the Thai data protection law say about consent?"*
+- *"Search for cybersecurity requirements in Thai legislation"*
+- *"Is this statute still in force?"*
+- *"Find provisions about personal data in Thai law"*
+- *"What EU directives does this Thai law implement?"*
+- *"Which Thai laws implement the GDPR?"*
+- *"Validate this legal citation"*
+- *"Build a legal stance on data breach notification requirements"*
+
+---
+
+## Available Tools (13)
+
+### Core Legal Research Tools (8)
+
+| Tool | Description |
+|------|-------------|
+| `search_legislation` | FTS5 full-text search across all provisions with BM25 ranking |
+| `get_provision` | Retrieve specific provision by statute + chapter/section |
+| `check_currency` | Check if statute is in force, amended, or repealed |
+| `validate_citation` | Validate citation against database (zero-hallucination check) |
+| `build_legal_stance` | Aggregate citations from statutes for a legal topic |
+| `format_citation` | Format citations per Thai conventions (full/short/pinpoint) |
+| `list_sources` | List all available statutes with metadata |
+| `about` | Server info, capabilities, and coverage summary |
+
+### EU/International Law Integration Tools (5)
+
+| Tool | Description |
+|------|-------------|
+| `get_eu_basis` | Get EU directives/regulations for Thai statute |
+| `get_thailand_law_implementations` | Find Thai laws implementing EU act |
+| `search_eu_implementations` | Search EU documents with Thai implementation counts |
+| `get_provision_eu_basis` | Get EU law references for specific provision |
+| `validate_eu_compliance` | Check implementation status of EU directives |
+
+---
+
+## Why This Works
+
+**Verbatim Source Text (No LLM Processing):**
+- All statute text is ingested from official Thai government sources
+- Provisions are returned **unchanged** from SQLite FTS5 database rows
+- Zero LLM summarization or paraphrasing -- the database contains regulation text, not AI interpretations
+
+**Smart Context Management:**
+- Search returns ranked provisions with BM25 scoring (safe for context)
+- Provision retrieval gives exact text by statute identifier + chapter/section
+- Cross-references help navigate without loading everything at once
+
+**Technical Architecture:**
+```
+Official Sources --> Parse --> SQLite --> FTS5 snippet() --> MCP response
+                     ^                       ^
+              Provision parser         Verbatim database query
+```
+
+### Traditional Research vs. This MCP
+
+| Traditional Approach | This MCP Server |
+|---------------------|-----------------|
+| Search official databases by statute number | Search by plain language |
+| Navigate multi-chapter statutes manually | Get the exact provision with context |
+| Manual cross-referencing between laws | `build_legal_stance` aggregates across sources |
+| "Is this statute still in force?" --> check manually | `check_currency` tool --> answer in seconds |
+| Find EU basis --> dig through EUR-Lex | `get_eu_basis` --> linked EU directives instantly |
+| No API, no integration | MCP protocol --> AI-native |
+
+---
+
+## Data Sources & Freshness
+
+All content is sourced from authoritative Thai legal databases:
+
+- **[Royal Gazette](https://www.ratchakitcha.soc.go.th)** -- Official Thai government legal database
+
+**Verified data only** -- every citation is validated against official sources. Zero LLM-generated content.
+
+---
+
+## Security
+
+This project uses multiple layers of automated security scanning:
+
+| Scanner | What It Does | Schedule |
+|---------|-------------|----------|
+| **CodeQL** | Static analysis for security vulnerabilities | Weekly + PRs |
+| **Semgrep** | SAST scanning (OWASP top 10, secrets, TypeScript) | Every push |
+| **Gitleaks** | Secret detection across git history | Every push |
+| **Trivy** | CVE scanning on filesystem and npm dependencies | Daily |
+| **Socket.dev** | Supply chain attack detection | PRs |
+| **Dependabot** | Automated dependency updates | Weekly |
+
+See [SECURITY.md](SECURITY.md) for the full policy and vulnerability reporting.
+
+---
+
+## Important Disclaimers
+
+### Legal Advice
+
+> **THIS TOOL IS NOT LEGAL ADVICE**
+>
+> Statute text is sourced from official Thai government publications. However:
+> - This is a **research tool**, not a substitute for professional legal counsel
+> - **Court case coverage is limited** -- do not rely solely on this for case law research
+> - **Verify critical citations** against primary sources for court filings
+> - **EU cross-references** are extracted from statute text, not EUR-Lex full text
+
+**Before using professionally, read:** [DISCLAIMER.md](DISCLAIMER.md) | [SECURITY.md](SECURITY.md)
+
+### Client Confidentiality
+
+Queries go through the Claude API. For privileged or confidential matters, use on-premise deployment.
+
+---
+
+## Development
+
+### Setup
+
+```bash
+git clone https://github.com/Ansvar-Systems/Thailand-law-mcp
+cd Thailand-law-mcp
+npm install
+npm run build
+npm test
+```
+
+### Running Locally
+
+```bash
+npm run dev                                       # Start MCP server
+npx @anthropic/mcp-inspector node dist/index.js   # Test with MCP Inspector
+```
+
+---
+
+## Related Projects: Complete Compliance Suite
+
+This server is part of **Ansvar's Compliance Suite** -- MCP servers that work together for end-to-end compliance coverage:
+
+### [@ansvar/eu-regulations-mcp](https://github.com/Ansvar-Systems/EU_compliance_MCP)
+**Query 49 EU regulations directly from Claude** -- GDPR, AI Act, DORA, NIS2, MiFID II, eIDAS, and more. Full regulatory text with article-level search. `npx @ansvar/eu-regulations-mcp`
+
+### [@ansvar/us-regulations-mcp](https://github.com/Ansvar-Systems/US_Compliance_MCP)
+**Query US federal and state compliance laws** -- HIPAA, CCPA, SOX, GLBA, FERPA, and more. `npx @ansvar/us-regulations-mcp`
+
+### [@ansvar/security-controls-mcp](https://github.com/Ansvar-Systems/security-controls-mcp)
+**Query 261 security frameworks** -- ISO 27001, NIST CSF, SOC 2, CIS Controls, SCF, and more. `npx @ansvar/security-controls-mcp`
+
+### [@ansvar/automotive-cybersecurity-mcp](https://github.com/Ansvar-Systems/Automotive-MCP)
+**Query UNECE R155/R156 and ISO 21434** -- Automotive cybersecurity compliance. `npx @ansvar/automotive-cybersecurity-mcp`
+
+**30+ national law MCPs** covering Australia, Brazil, Canada, China, Denmark, Finland, France, Germany, Ghana, Iceland, India, Ireland, Israel, Italy, Japan, Kenya, Netherlands, Nigeria, Norway, Singapore, Slovenia, South Korea, Sweden, Switzerland, Thailand, UAE, UK, and more.
+
+---
+
+## Contributing
+
+Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+Priority areas:
+- Court case law expansion
+- EU cross-reference improvements
+- Historical statute versions and amendment tracking
+- Additional statutory instruments and regulations
+
+---
+
+## Roadmap
+
+- [x] Core statute database with FTS5 search
+- [x] EU/international law cross-references
+- [x] Vercel Streamable HTTP deployment
+- [x] npm package publication
+- [ ] Court case law expansion
+- [ ] Historical statute versions (amendment tracking)
+- [ ] Preparatory works / explanatory memoranda
+- [ ] Lower court and tribunal decisions
+
+---
+
+## Citation
+
+If you use this MCP server in academic research:
+
+```bibtex
+@software{thailand_law_mcp_2025,
+  author = {Ansvar Systems AB},
+  title = {Thai Law MCP Server: AI-Powered Legal Research Tool},
+  year = {2025},
+  url = {https://github.com/Ansvar-Systems/Thailand-law-mcp},
+  note = {Thai legal database with full-text search and EU cross-references}
+}
+```
+
+---
+
+## License
+
+Apache License 2.0. See [LICENSE](./LICENSE) for details.
+
+### Data Licenses
+
+- **Statutes & Legislation:** Thai Government (public domain)
+- **EU Metadata:** EUR-Lex (EU public domain)
+
+---
+
+## About Ansvar Systems
+
+We build AI-accelerated compliance and legal research tools for the global market. This MCP server started as our internal reference tool -- turns out everyone building compliance tools has the same research frustrations.
+
+So we're open-sourcing it.
+
+**[ansvar.eu](https://ansvar.eu)** -- Stockholm, Sweden
+
+---
+
+<p align="center">
+  <sub>Built with care in Stockholm, Sweden</sub>
+</p>
