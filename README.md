@@ -123,6 +123,27 @@ Once connected, just ask naturally:
 
 ---
 
+## Key Legislation Covered
+
+| Act | Year (B.E. / CE) | Significance |
+|-----|-------------------|-------------|
+| **Personal Data Protection Act (PDPA)** | B.E. 2562 / 2019 | Comprehensive data protection law modeled on EU GDPR; full enforcement from 1 June 2022; establishes the PDPC |
+| **Computer Crime Act** | B.E. 2550 / 2007 (amended B.E. 2560 / 2017) | Criminalises unauthorised computer access, data interference, and content offences |
+| **Cybersecurity Act** | B.E. 2562 / 2019 | Framework for critical information infrastructure protection; establishes the National Cybersecurity Committee (NCSC) |
+| **Electronic Transactions Act** | B.E. 2544 / 2001 | Legal recognition of electronic transactions, electronic signatures, and electronic documents |
+| **Civil and Commercial Code** | B.E. 2468 / 1925 (amended) | Core civil law framework including contract, tort, and relevant privacy provisions |
+| **Constitution of the Kingdom of Thailand** | B.E. 2560 / 2017 | Supreme law; includes provisions on rights and liberties |
+
+---
+
+## Deployment Tier
+
+**SMALL** -- Single tier, bundled SQLite database shipped with the npm package.
+
+**Estimated database size:** ~60-120 MB (full corpus of Thai federal legislation with English translations)
+
+---
+
 ## Available Tools (13)
 
 ### Core Legal Research Tools (8)
