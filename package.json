@@ -1,6 +1,6 @@
 {
   "name": "@ansvar/thailand-law-mcp",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "mcpName": "eu.ansvar/thailand-law-mcp",
   "description": "Thailand law database covering PDPA, Computer Crime Act, Cybersecurity Act, Electronic Transactions Act, and Civil and Commercial Code with full-text search",
   "type": "module",
