@@ -7,7 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0.0] - 2026-XX-XX
+## [1.1.0] - 2026-02-22
+### Added
+- `data/census.json` — full corpus census (6 laws, 71 provisions)
+- Streamable HTTP transport in `server.json` (Vercel endpoint)
+- Keywords in `server.json` for MCP registry discoverability
+
+### Changed
+- `server.json` upgraded to `packages` format with dual transport (stdio + streamable-http)
+- Improved description in `server.json`
+
+## [1.0.0] - 2026-02-22
 ### Added
 - Initial release of Thailand Law MCP
 - `search_legislation` tool for full-text search across all Thai statutes
@@ -24,5 +34,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - npm package with stdio transport
 - MCP Registry publishing
 
-[Unreleased]: https://github.com/Ansvar-Systems/thailand-law-mcp/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/Ansvar-Systems/thailand-law-mcp/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/Ansvar-Systems/thailand-law-mcp/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/Ansvar-Systems/thailand-law-mcp/releases/tag/v1.0.0
