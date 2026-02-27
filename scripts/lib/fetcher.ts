@@ -1,39 +1,22 @@
 /**
- * Rate-limited HTTP client for ocs.go.th (Office of the Council of State)
+ * OCS public API client for Thai legislation.
  *
- * As of 2025, krisdika.go.th redirects to ocs.go.th. The old /librarian/
- * URL structure is gone. The new portal uses:
- *   - Search API: POST https://www.ocs.go.th/searchlaw/indexs/list_table_search
- *   - Document viewer: SPA at https://searchlaw.ocs.go.th/council-of-state/
+ * Uses the public API at searchlaw.ocs.go.th/ocs-api/public/ which provides:
+ *   - Discovery: POST /public/browse/searchByYear — 4,300+ laws paginated
+ *   - Full text:  POST /public/doc/getLawDoc      — structured sections per law
+ *   - HTML render: POST /public/doc/printHtml     — single-page HTML fallback
+ *   - English:    POST /public/browse/searchEnByYear — 147 English translations
  *
- * The search API returns law metadata (lawCode, lawNameTh, encTimelineID, year,
- * state) and a truncated contentlaw snippet. Full text is only available through
- * the SPA viewer's backend API (which requires session auth).
+ * No authentication required. All endpoints accept a standard reqHeader wrapper.
  *
- * Discovery strategy: iterate through the Thai alphabet using the letter filter
- * to enumerate all laws. Each letter returns up to 20 results per page.
- *
- * - 500ms minimum delay between requests
+ * - 300ms minimum delay between requests
  * - User-Agent header identifying the MCP
  * - No auth needed (government open data)
  */
 
 const USER_AGENT = 'ThailandLawMCP/1.0 (https://github.com/Ansvar-Systems/thailand-law-mcp; hello@ansvar.ai)';
-const BASE_URL = 'https://www.ocs.go.th';
-const SEARCH_API = `${BASE_URL}/searchlaw/indexs/list_table_search`;
-const MIN_DELAY_MS = 500;
-
-// Thai alphabet letters used as filters in the OCS search API
-const THAI_LETTERS = [
-  'ก','ข','ค','ง','จ','ช','ด','ต','ถ','ท','ธ','น',
-  'บ','ป','ผ','ฝ','พ','ฟ','ภ','ม','ย','ร','ล','ว','ศ','ส','ห','อ',
-];
-
-// English alphabet for the law_en tab
-const ENGLISH_LETTERS = [
-  'A','B','C','D','E','F','G','H','I','J','K','L','M',
-  'N','O','P','R','S','T','U','V','W',
-];
+const API_BASE = 'https://searchlaw.ocs.go.th/ocs-api';
+const MIN_DELAY_MS = 300;
 
 let lastRequestTime = 0;
 
@@ -46,15 +29,95 @@ async function rateLimit(): Promise<void> {
   lastRequestTime = Date.now();
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Request wrapper
+// ─────────────────────────────────────────────────────────────────────────────
+
+function buildReqHeader(serviceName: string): Record<string, string> {
+  const now = new Date();
+  const pad = (n: number) => String(n).padStart(2, '0');
+  const ms = String(now.getMilliseconds()).padStart(3, '0');
+  const dtm = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}.${ms}`;
+
+  return {
+    reqId: String(Date.now()),
+    reqChannel: 'WEB',
+    reqDtm: dtm,
+    reqBy: 'unknow',
+    serviceName,
+  };
+}
+
+async function postAPI<T = unknown>(
+  path: string,
+  serviceName: string,
+  reqBody: Record<string, unknown>,
+  maxRetries = 3,
+): Promise<{ status: number; data: T }> {
+  await rateLimit();
+
+  const payload = {
+    reqHeader: buildReqHeader(serviceName),
+    reqBody,
+  };
+
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      const response = await fetch(`${API_BASE}${path}`, {
+        method: 'POST',
+        headers: {
+          'User-Agent': USER_AGENT,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.status === 429 || response.status >= 500) {
+        if (attempt < maxRetries) {
+          const backoff = Math.pow(2, attempt + 1) * 1000;
+          console.log(`  HTTP ${response.status} for ${path}, retrying in ${backoff}ms...`);
+          await new Promise(resolve => setTimeout(resolve, backoff));
+          continue;
+        }
+      }
+
+      const json = await response.json() as Record<string, unknown>;
+
+      // OCS wraps responses in { respHeader: {...}, respBody: {...} }
+      const respHeader = json.respHeader as Record<string, string> | undefined;
+      if (respHeader?.errorCode && respHeader.errorCode !== 'SUCCESS') {
+        console.log(`\n  API error for ${path}: ${respHeader.errorCode} — ${respHeader.errorDesc ?? ''}`);
+        return { status: response.status, data: {} as T };
+      }
+
+      const resBody = (json.respBody ?? json) as T;
+      return { status: response.status, data: resBody };
+    } catch (err) {
+      if (attempt < maxRetries) {
+        const backoff = Math.pow(2, attempt + 1) * 1000;
+        console.log(`  Error for ${path}: ${err}, retrying in ${backoff}ms...`);
+        await new Promise(resolve => setTimeout(resolve, backoff));
+        continue;
+      }
+      throw err;
+    }
+  }
+
+  throw new Error(`Failed to fetch ${path} after ${maxRetries} retries`);
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Types
+// ─────────────────────────────────────────────────────────────────────────────
+
 export interface FetchResult {
   status: number;
   body: string;
   contentType: string;
 }
 
-/**
- * Raw entry from the OCS search API response.
- */
+/** Entry from the old OCS search API (kept for backward compatibility). */
 export interface OCSLawEntry {
   lawCode: string;
   lawNameTh: string | null;
@@ -64,212 +127,244 @@ export interface OCSLawEntry {
   year: number;
   publishDate: string;
   lawEn: boolean | false;
-  state: string;     // "01" = in force
+  state: string;
   fileUUID: string;
   num: number;
 }
 
+/** Entry from /public/browse/searchByYear. */
+export interface BrowseEntry {
+  timelineId: string;
+  lawCode: string;
+  header: string;           // Thai law name
+  headerEn?: string;        // English name (if translated)
+  yearAd: number;           // CE year
+  yearBe?: number;          // BE year
+  lawCategoryId: string;    // e.g. "1B" for Acts
+  publishDateAd: string;    // ISO date
+  fileUuid?: string;
+  hasLawTranslation: boolean;
+  state?: string;           // "01" = in force
+}
+
+/** Section from /public/doc/getLawDoc. */
+export interface LawSection {
+  sectionId: string;
+  sectionTypeId: number;    // 4=article, 8=chapter, 9=part, 1=title, etc.
+  sectionNo: string;        // e.g. "42"
+  sectionLabel: string;     // e.g. "มาตรา 42"
+  sectionContent: string;   // HTML content
+  orderNo: number;
+}
+
+/** Full response from /public/doc/getLawDoc. */
+export interface LawDocResponse {
+  lawInfo: {
+    timelineId: string;
+    lawCode: string;
+    header: string;
+    headerEn?: string;
+    lawCategoryId: string;
+    state: string;
+    publishDateAd?: string;
+    publishDateBe?: string;
+  };
+  lawSections: LawSection[];
+  footnoteList?: Array<{ footnoteId: string; content: string }>;
+  timelines?: Array<{ timelineId: string; versionName: string }>;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Discovery — /public/browse/searchByYear
+// ─────────────────────────────────────────────────────────────────────────────
+
 /**
- * Fetch a URL with rate limiting and proper headers.
- * Retries up to 3 times on 429/5xx errors with exponential backoff.
+ * Discover all Thai laws via the searchByYear endpoint.
+ * Returns 4,300+ laws. Fetches in pages of 500.
  */
+export async function discoverAllLaws(): Promise<BrowseEntry[]> {
+  const allEntries: BrowseEntry[] = [];
+  let page = 1;
+  const pageSize = 500;
+  let hasMore = true;
+
+  while (hasMore) {
+    const result = await postAPI<{ data?: BrowseEntry[]; pagination?: { totalRecords?: number } }>(
+      '/public/browse/searchByYear',
+      'searchPublicByYear',
+      {
+        yearAd: '',
+        lawCategoryId: '',
+        keyword: '',
+        pagination: { pageNo: page, pageSize },
+      },
+    );
+
+    const items = result.data?.data ?? [];
+    if (items.length === 0) {
+      hasMore = false;
+    } else {
+      allEntries.push(...items);
+      const total = result.data?.pagination?.totalRecords ?? 0;
+      console.log(`  Page ${page}: ${allEntries.length} / ${total} laws`);
+      if (allEntries.length >= total || items.length < pageSize) {
+        hasMore = false;
+      } else {
+        page++;
+      }
+    }
+  }
+
+  return allEntries;
+}
+
+/**
+ * Discover English-translated laws via searchEnByYear.
+ */
+export async function discoverEnglishLaws(): Promise<BrowseEntry[]> {
+  const allEntries: BrowseEntry[] = [];
+  let page = 1;
+  const pageSize = 500;
+  let hasMore = true;
+
+  while (hasMore) {
+    const result = await postAPI<{ data?: BrowseEntry[]; pagination?: { totalRecords?: number } }>(
+      '/public/browse/searchEnByYear',
+      'searchPublicEnByYear',
+      {
+        yearAd: '',
+        lawCategoryId: '',
+        keyword: '',
+        pagination: { pageNo: page, pageSize },
+      },
+    );
+
+    const items = result.data?.data ?? [];
+    if (items.length === 0) {
+      hasMore = false;
+    } else {
+      allEntries.push(...items);
+      const total = result.data?.pagination?.totalRecords ?? 0;
+      if (allEntries.length >= total || items.length < pageSize) {
+        hasMore = false;
+      } else {
+        page++;
+      }
+    }
+  }
+
+  return allEntries;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Full text — /public/doc/getLawDoc
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Fetch the full structured content of a law by timelineId.
+ * Returns sections with HTML content that can be stripped to plain text.
+ */
+export async function getLawDoc(timelineId: string): Promise<LawDocResponse | null> {
+  const result = await postAPI<LawDocResponse>(
+    '/public/doc/getLawDoc',
+    'getPublicLawDoc',
+    { timelineId },
+  );
+
+  if (!result.data?.lawInfo) return null;
+  return result.data;
+}
+
+/**
+ * Fetch a law rendered as a single HTML page (fallback).
+ */
+export async function getLawHtml(timelineId: string): Promise<string | null> {
+  const result = await postAPI<{ contentHtml?: string }>(
+    '/public/doc/printHtml',
+    'printPublicLawAsHtml',
+    { timelineId },
+  );
+
+  return result.data?.contentHtml ?? null;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Legacy compatibility — fetchLibrarianIndex
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * @deprecated Use discoverAllLaws() instead.
+ * Kept for backward compatibility with existing ingest.ts code path.
+ * Now internally uses the searchByYear API instead of the old letter-based search.
+ */
+export async function fetchLibrarianIndex(
+  tab: 'law' | 'law_en' = 'law',
+  _letterFilter?: string,
+): Promise<FetchResult> {
+  const entries = tab === 'law_en'
+    ? await discoverEnglishLaws()
+    : await discoverAllLaws();
+
+  // Convert BrowseEntry[] to OCSLawEntry[] format for backward compat
+  const ocsEntries: OCSLawEntry[] = entries.map(e => ({
+    lawCode: e.lawCode,
+    lawNameTh: e.header,
+    lawNameEn: e.headerEn ?? null,
+    contentlaw: '',
+    encTimelineID: e.timelineId,
+    year: e.yearAd + 543, // CE to BE
+    publishDate: e.publishDateAd ?? '',
+    lawEn: e.hasLawTranslation ?? false,
+    state: e.state ?? '01',
+    fileUUID: e.fileUuid ?? '',
+    num: 0,
+  }));
+
+  return {
+    status: ocsEntries.length > 0 ? 200 : 404,
+    body: JSON.stringify(ocsEntries),
+    contentType: 'application/json',
+  };
+}
+
+/** @deprecated */
+export async function searchLawsByKeyword(_keyword: string, _perpage = 20): Promise<OCSLawEntry[]> {
+  return [];
+}
+
+/** @deprecated */
+export async function fetchActPage(_sysId: string): Promise<FetchResult> {
+  return { status: 404, body: '', contentType: '' };
+}
+
+/** @deprecated */
+export async function fetchActEnglish(_sysId: string): Promise<FetchResult> {
+  return { status: 404, body: '', contentType: '' };
+}
+
+/** @deprecated — use fetchWithRateLimit only for non-API URLs. */
 export async function fetchWithRateLimit(url: string, maxRetries = 3): Promise<FetchResult> {
   await rateLimit();
 
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
     const response = await fetch(url, {
-      headers: {
-        'User-Agent': USER_AGENT,
-        'Accept': 'text/html, application/xhtml+xml, */*',
-        'Accept-Language': 'th,en;q=0.9',
-      },
+      headers: { 'User-Agent': USER_AGENT, 'Accept': '*/*' },
     });
 
     if (response.status === 429 || response.status >= 500) {
       if (attempt < maxRetries) {
         const backoff = Math.pow(2, attempt + 1) * 1000;
-        console.log(`  HTTP ${response.status} for ${url}, retrying in ${backoff}ms...`);
         await new Promise(resolve => setTimeout(resolve, backoff));
         continue;
       }
     }
 
-    const body = await response.text();
     return {
       status: response.status,
-      body,
+      body: await response.text(),
       contentType: response.headers.get('content-type') ?? '',
     };
   }
 
   throw new Error(`Failed to fetch ${url} after ${maxRetries} retries`);
-}
-
-/**
- * POST to the OCS search API with rate limiting and retry.
- */
-async function postSearchAPI(params: Record<string, string>, maxRetries = 3): Promise<{ status: number; data: OCSLawEntry[]; meta: Record<string, unknown> }> {
-  await rateLimit();
-
-  const body = new URLSearchParams();
-  for (const [key, value] of Object.entries(params)) {
-    body.append(key, value);
-  }
-
-  for (let attempt = 0; attempt <= maxRetries; attempt++) {
-    const response = await fetch(SEARCH_API, {
-      method: 'POST',
-      headers: {
-        'User-Agent': USER_AGENT,
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json',
-      },
-      body: body.toString(),
-    });
-
-    if (response.status === 429 || response.status >= 500) {
-      if (attempt < maxRetries) {
-        const backoff = Math.pow(2, attempt + 1) * 1000;
-        console.log(`  HTTP ${response.status} from search API, retrying in ${backoff}ms...`);
-        await new Promise(resolve => setTimeout(resolve, backoff));
-        continue;
-      }
-    }
-
-    const raw = await response.text();
-
-    // The API prepends PHP error notices before the JSON. Strip them.
-    const jsonStart = raw.indexOf('{"meta');
-    if (jsonStart === -1) {
-      // Try alternative JSON start
-      const altStart = raw.indexOf('{"error');
-      if (altStart !== -1) {
-        const parsed = JSON.parse(raw.slice(altStart));
-        return { status: response.status, data: [], meta: parsed };
-      }
-      return { status: response.status, data: [], meta: {} };
-    }
-
-    const parsed = JSON.parse(raw.slice(jsonStart));
-    return {
-      status: response.status,
-      data: parsed.data ?? [],
-      meta: parsed.meta ?? {},
-    };
-  }
-
-  throw new Error(`Failed to fetch from search API after ${maxRetries} retries`);
-}
-
-/**
- * Fetch the OCS law index using the search API.
- *
- * Iterates through Thai alphabet letters to enumerate all laws.
- * The API returns up to 20 results per page; for letters with more than 20 laws,
- * multiple pages are fetched.
- *
- * @param tab - 'law' for Thai laws, 'law_en' for English translations
- * @param letterFilter - optional single letter to fetch only that letter
- */
-export async function fetchLibrarianIndex(
-  tab: 'law' | 'law_en' = 'law',
-  letterFilter?: string,
-): Promise<FetchResult> {
-  const letters = letterFilter
-    ? [letterFilter]
-    : (tab === 'law_en' ? ENGLISH_LETTERS : THAI_LETTERS);
-
-  const allEntries: OCSLawEntry[] = [];
-
-  for (const letter of letters) {
-    let page = 1;
-    let hasMore = true;
-
-    while (hasMore) {
-      const result = await postSearchAPI({
-        'query[tab_type]': tab,
-        'query[page]': String(page),
-        'query[perpage]': '20',
-        'query[letter]': letter,
-        'query[pagination]': '1',
-      });
-
-      if (result.data.length === 0) {
-        hasMore = false;
-      } else {
-        // Check if this page is the same as the first page (API pagination bug for law_en)
-        if (page > 1 && result.data.length > 0) {
-          const firstEncId = result.data[0]?.encTimelineID;
-          const alreadySeen = allEntries.some(e => e.encTimelineID === firstEncId);
-          if (alreadySeen) {
-            hasMore = false;
-            continue;
-          }
-        }
-
-        allEntries.push(...result.data);
-        // The API caps at 20 per page. If we got fewer, there are no more pages.
-        if (result.data.length < 20) {
-          hasMore = false;
-        } else {
-          page++;
-        }
-      }
-    }
-  }
-
-  // Return as a FetchResult with the entries serialized as JSON
-  return {
-    status: allEntries.length > 0 ? 200 : 404,
-    body: JSON.stringify(allEntries),
-    contentType: 'application/json',
-  };
-}
-
-/**
- * Search for specific laws by Thai keyword.
- * Uses the topic search with relevance ranking.
- */
-export async function searchLawsByKeyword(keyword: string, perpage = 20): Promise<OCSLawEntry[]> {
-  const result = await postSearchAPI({
-    'query[tab_type]': 'law',
-    'query[page]': '1',
-    'query[perpage]': String(perpage),
-    'query[pagination]': '1',
-    'query[q]': keyword,
-    'query[topic]': '1',
-    'query[sort]': 'score-desc',
-  });
-  return result.data;
-}
-
-/**
- * Fetch a specific act page by its system ID from the old Krisdika URL scheme.
- *
- * NOTE: These URLs no longer work since krisdika.go.th redirected to ocs.go.th.
- * This function is kept for backward compatibility with existing seed data
- * but will return 404 for all requests.
- */
-export async function fetchActPage(sysId: string): Promise<FetchResult> {
-  // Old URL structure is dead. Return a stub.
-  console.log(`  WARNING: fetchActPage(${sysId}) — old krisdika.go.th URLs no longer work.`);
-  return {
-    status: 404,
-    body: '',
-    contentType: '',
-  };
-}
-
-/**
- * Fetch an English translation of an act if available.
- *
- * NOTE: These URLs no longer work since krisdika.go.th redirected to ocs.go.th.
- */
-export async function fetchActEnglish(sysId: string): Promise<FetchResult> {
-  console.log(`  WARNING: fetchActEnglish(${sysId}) — old krisdika.go.th URLs no longer work.`);
-  return {
-    status: 404,
-    body: '',
-    contentType: '',
-  };
 }
