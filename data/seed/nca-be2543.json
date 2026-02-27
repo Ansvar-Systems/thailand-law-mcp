@@ -1,0 +1,37 @@
+{
+  "id": "nca-be2543",
+  "type": "statute",
+  "title_th": "พระราชบัญญัติว่าด้วยการกระทำความผิดเกี่ยวกับคอมพิวเตอร์ (ฉบับที่ 2) พ.ศ. 2560",
+  "title_en": "Computer Crime Act (No. 2) B.E. 2560 (2017)",
+  "short_name": "CCA No.2 2017",
+  "status": "in_force",
+  "be_year": 2560,
+  "ce_year": 2017,
+  "issued_date": "2017-01-24",
+  "in_force_date": "2017-05-24",
+  "url": "https://searchlaw.ocs.go.th/council-of-state/#/public/doc/cca-no2-be2560",
+  "description": "Amendment to the Computer Crime Act B.E. 2550 (2007). Key changes include: expanded computer-related content offences, establishment of a screening committee for content blocking requests, revised data retention requirements, penalties for internet service providers that fail to comply with court orders, and new provisions for computer-related evidence in legal proceedings.",
+  "provisions": [
+    {
+      "provision_ref": "s3",
+      "section": "3",
+      "title": "Amendment to Section 14 (content offences)",
+      "content": "Section 3. Section 14 of the Computer Crime Act B.E. 2550 shall be amended as follows: Section 14. Any person who commits any of the following offences shall be punished with imprisonment for a term not exceeding five years, or a fine not exceeding one hundred thousand Baht, or both: (1) inputting into a computer system forged computer data, whether in whole or in part, or false computer data in a manner that is likely to cause damage to a third party or the public; (2) inputting into a computer system false computer data in a manner that is likely to damage the maintenance of national security, public safety, national economic security, or public infrastructure serving the public interest, or cause panic in the public; (3) inputting into a computer system any computer data constituting an offence relating to the security of the Kingdom or terrorism under the Criminal Code.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s5",
+      "section": "5",
+      "title": "Computer data screening committee",
+      "content": "Section 5. There shall be a Computer Data Screening Committee consisting of the Minister of Digital Economy and Society as chairperson, and four other members appointed by the Cabinet. The Committee shall have the power to approve requests for court orders to block or remove computer data that constitutes an offence under this Act.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s8",
+      "section": "8",
+      "title": "ISP content blocking obligation",
+      "content": "Section 8. Where a court has issued an order to block access to computer data, the service provider or relevant person shall comply with the order within the timeframe specified by the court. A service provider who fails to comply with the court order without reasonable justification shall be punished with a fine not exceeding two hundred thousand Baht and a further fine not exceeding five thousand Baht per day throughout the period of non-compliance.",
+      "language": "en"
+    }
+  ]
+}

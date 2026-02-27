@@ -1,0 +1,37 @@
+{
+  "id": "deb-be2560",
+  "type": "statute",
+  "title_th": "พระราชบัญญัติว่าด้วยธุรกรรมทางอิเล็กทรอนิกส์ (ฉบับที่ 3) พ.ศ. 2562",
+  "title_en": "Digital Economy and Society Development Act B.E. 2560 (2017)",
+  "short_name": "DE Act 2017",
+  "status": "in_force",
+  "be_year": 2560,
+  "ce_year": 2017,
+  "issued_date": "2017-01-24",
+  "in_force_date": "2017-01-25",
+  "url": "https://searchlaw.ocs.go.th/council-of-state/#/public/doc/deb-be2560",
+  "description": "Establishes the National Digital Economy and Society Committee (NDESC) chaired by the Prime Minister, and the Digital Economy and Society Development Fund. The Act provides the institutional framework for Thailand's digital transformation, including development of digital infrastructure, digital literacy, and the digital economy. It created the Ministry of Digital Economy and Society (MDES) to replace the former Ministry of Information and Communication Technology (MICT).",
+  "provisions": [
+    {
+      "provision_ref": "s1",
+      "section": "1",
+      "title": "Short title",
+      "content": "Section 1. This Act shall be called the Digital Economy and Society Development Act, B.E. 2560 (2017).",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s5",
+      "section": "5",
+      "title": "National Committee",
+      "content": "Section 5. There shall be a National Digital Economy and Society Committee, consisting of the Prime Minister as chairperson, the Minister of Digital Economy and Society as vice-chairperson, and not more than twelve qualified members appointed by the Cabinet. The Committee shall have the power and duties to prepare a national digital economy and society development policy and plan, promote and support digital economy and society development, and supervise the administration of the Digital Economy and Society Development Fund.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s19",
+      "section": "19",
+      "title": "Digital Economy and Society Development Fund",
+      "content": "Section 19. There shall be a Digital Economy and Society Development Fund for the purposes of: (1) investing in or subsidising the development of digital economy and society, including digital infrastructure, digital innovation, and digital human capital; (2) promoting and supporting research and development in digital technology; (3) supporting the provision of digital services to the public; (4) promoting digital literacy and closing the digital divide.",
+      "language": "en"
+    }
+  ]
+}

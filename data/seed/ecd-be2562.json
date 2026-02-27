@@ -1,0 +1,58 @@
+{
+  "id": "ecd-be2562",
+  "type": "statute",
+  "title_th": "พระราชกำหนดการประกอบธุรกิจสินทรัพย์ดิจิทัล พ.ศ. 2561",
+  "title_en": "Emergency Decree on Digital Asset Businesses B.E. 2561 (2018)",
+  "short_name": "Digital Asset Decree 2018",
+  "status": "in_force",
+  "be_year": 2561,
+  "ce_year": 2018,
+  "issued_date": "2018-05-13",
+  "in_force_date": "2018-05-14",
+  "url": "https://searchlaw.ocs.go.th/council-of-state/#/public/doc/ecd-be2561",
+  "description": "Thailand's comprehensive digital asset regulation, one of the earliest dedicated cryptocurrency and digital token regulatory frameworks in Asia. Establishes the licensing and regulatory framework for digital asset exchanges, brokers, and dealers. Defines cryptocurrencies and digital tokens, mandates SEC registration for ICOs (initial coin offerings), and imposes AML/KYC requirements on digital asset businesses. The SEC is designated as the primary regulator.",
+  "provisions": [
+    {
+      "provision_ref": "s1",
+      "section": "1",
+      "title": "Short title",
+      "content": "Section 1. This Emergency Decree shall be called the Emergency Decree on Digital Asset Businesses, B.E. 2561 (2018).",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s3",
+      "section": "3",
+      "title": "Definitions",
+      "content": "Section 3. In this Emergency Decree: 'digital asset' means cryptocurrency and digital token; 'cryptocurrency' means an electronic data unit created on an electronic system or network for the purpose of being used as a medium of exchange for the acquisition of goods, services, or any other rights, or the exchange between digital assets, and shall include any other electronic data units as specified by the SEC Board; 'digital token' means an electronic data unit created on an electronic system or network for the purpose of specifying the right of a person to participate in an investment in any project or business, or specifying the right of a person to acquire specific goods, services, or any other specific rights under an agreement between the issuer and the holder; 'digital asset business' means (1) a digital asset exchange, (2) a digital asset broker, (3) a digital asset dealer, or (4) any other business related to digital assets as prescribed by the Minister.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s6",
+      "section": "6",
+      "title": "Digital asset business licence requirement",
+      "content": "Section 6. No person shall operate a digital asset business unless approved and granted a licence by the Minister upon the recommendation of the SEC Board. The application for a licence and the conditions thereof shall be as prescribed by the SEC Board.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s17",
+      "section": "17",
+      "title": "ICO registration",
+      "content": "Section 17. No person shall offer newly issued digital tokens to the public unless the issuer has obtained approval from the SEC portal and filed a registration statement and draft prospectus with the SEC Office. The SEC Board may prescribe conditions, restrictions, and procedures for the offering of newly issued digital tokens.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s26",
+      "section": "26",
+      "title": "AML/KYC requirements",
+      "content": "Section 26. A digital asset business operator shall verify the identity of customers and maintain customer records in accordance with the rules prescribed by the SEC Board. The operator shall also report transactions suspected of being connected with the commission of a predicate offence under the Anti-Money Laundering Act.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s66",
+      "section": "66",
+      "title": "Penalties for unlicensed operation",
+      "content": "Section 66. Any person who operates a digital asset business without a licence under Section 6 shall be punished with imprisonment for a term not exceeding two years, or a fine not exceeding two times the value of the digital assets involved in the transaction, but the fine shall not be less than five hundred thousand Baht, or both.",
+      "language": "en"
+    }
+  ]
+}

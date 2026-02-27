@@ -80,13 +80,66 @@ export function extractBeYear(text: string): number | null {
 // ─────────────────────────────────────────────────────────────────────────────
 
 /**
- * Parse a Krisdika library listing page to extract legislation index entries.
+ * Parse an OCS search API JSON response into legislation index entries.
+ *
+ * The body parameter should be a JSON string (array of OCSLawEntry objects
+ * from the new ocs.go.th search API) or HTML (legacy krisdika.go.th format).
  */
-export function parseListingPage(html: string, category: string): ActIndexEntry[] {
-  const $ = cheerio.load(html);
+export function parseListingPage(body: string, category: string): ActIndexEntry[] {
+  // Try parsing as JSON first (new OCS API format)
+  try {
+    const entries: ActIndexEntry[] = [];
+    const items = JSON.parse(body);
+
+    if (!Array.isArray(items)) return entries;
+
+    for (const item of items) {
+      const lawNameTh = item.lawNameTh ?? '';
+      const lawNameEn = (item.lawNameEn && item.lawNameEn !== false) ? String(item.lawNameEn) : '';
+      const encTimelineID = item.encTimelineID ?? '';
+
+      if (!lawNameTh && !lawNameEn) continue;
+
+      // Extract B.E. year from the title or publishDate
+      let beYear = extractBeYear(lawNameTh);
+      if (!beYear && item.publishDate) {
+        // publishDate format: "27/5/2562" (Thai B.E. year)
+        const dateMatch = item.publishDate.match(/(\d{4})$/);
+        if (dateMatch) {
+          const yr = parseInt(dateMatch[1], 10);
+          // Years > 2400 are B.E., otherwise treat as C.E.
+          if (yr > 2400) {
+            beYear = yr;
+          } else {
+            beYear = ceToBe(yr);
+          }
+        }
+      }
+      if (!beYear) continue;
+
+      const ceYear = beToce(beYear);
+
+      // Use encTimelineID as the sysId (it's the unique identifier in the new system)
+      entries.push({
+        title_th: lawNameTh,
+        title_en: lawNameEn,
+        sysId: encTimelineID,
+        beYear,
+        ceYear,
+        url: `https://searchlaw.ocs.go.th/council-of-state/#/public/doc/${encTimelineID}`,
+        category,
+      });
+    }
+
+    return entries;
+  } catch {
+    // Not JSON — fall through to legacy HTML parsing
+  }
+
+  // Legacy HTML parsing (for backward compatibility with old krisdika.go.th format)
+  const $ = cheerio.load(body);
   const entries: ActIndexEntry[] = [];
 
-  // Krisdika typically lists acts in table rows or anchor elements
   $('a[href*="getfile"]').each((_i, el) => {
     const $el = $(el);
     const href = $el.attr('href') ?? '';
@@ -94,7 +147,6 @@ export function parseListingPage(html: string, category: string): ActIndexEntry[
 
     if (!titleText || titleText.length < 5) return;
 
-    // Extract sysid from href
     const sysIdMatch = href.match(/sysid=(\d+)/);
     if (!sysIdMatch) return;
 
@@ -106,7 +158,7 @@ export function parseListingPage(html: string, category: string): ActIndexEntry[
 
     entries.push({
       title_th: titleText,
-      title_en: '', // Will be populated during content fetch
+      title_en: '',
       sysId,
       beYear,
       ceYear,
@@ -199,6 +251,39 @@ export function buildShortName(titleEn: string, titleTh: string, ceYear: number)
 }
 
 /**
+ * Common Thai legal prefixes to strip when building document IDs.
+ * These prefixes are extremely common and cause collisions.
+ */
+const THAI_PREFIXES = [
+  'พระราชบัญญัติประกอบรัฐธรรมนูญว่าด้วย',
+  'พระราชบัญญัติประกอบรัฐธรรมนูญ',
+  'พระราชกำหนดแก้ไขเพิ่มเติม',
+  'พระราชบัญญัติแก้ไขเพิ่มเติม',
+  'พระราชกำหนด',
+  'พระราชบัญญัติ',
+  'ประมวลกฎหมาย',
+  'กฎหมายลักษณะ',
+  'รัฐธรรมนูญแห่งราชอาณาจักรไทย',
+  'รัฐธรรมนูญ',
+  'ประกาศคณะ',
+  'คำสั่งคณะ',
+];
+
+/**
+ * Thai noise words / year markers to strip from the core title.
+ */
+const THAI_NOISE = [
+  /\(ยกเลิก\)/g,
+  /\(ฉบับที่\s*\d+\)/g,
+  /พุทธศักราช\s*\d*/g,
+  /พระพุทธศักราช\s*\d*/g,
+  /รัตนโกสินทร์\s*ศก\s*\d*/g,
+  /รัตนโกสินทร์ศก\s*\d*/g,
+  /พ\.ศ\.\s*\d*/g,
+  /ว่าด้วย/g,
+];
+
+/**
  * Derive an abbreviation from the English or Thai title.
  */
 function deriveAbbreviation(titleEn: string, titleTh: string): string {
@@ -229,9 +314,36 @@ function deriveAbbreviation(titleEn: string, titleTh: string): string {
     }
   }
 
-  // Fallback: use first few characters of Thai title
+  // For Thai-only titles: strip the common prefix and use the remaining unique part
   if (titleTh) {
-    return titleTh.slice(0, 10).replace(/\s+/g, '-');
+    let core = titleTh.trim();
+
+    // Remove the common Thai legal prefix
+    for (const prefix of THAI_PREFIXES) {
+      if (core.startsWith(prefix)) {
+        core = core.slice(prefix.length).trim();
+        break;
+      }
+    }
+
+    // Remove noise words and year markers
+    for (const noise of THAI_NOISE) {
+      core = core.replace(noise, '');
+    }
+
+    // Trim whitespace
+    core = core.replace(/\s+/g, ' ').trim();
+
+    // If we still have meaningful Thai text, use up to 50 chars
+    // to avoid collisions between similar titles (e.g. land transfer acts)
+    if (core.length > 0) {
+      // Sanitize for filesystem: replace spaces with hyphens, keep Thai chars
+      const slug = core.slice(0, 50).replace(/\s+/g, '-').replace(/[./\\:]/g, '');
+      if (slug.length > 0) return slug;
+    }
+
+    // Absolute fallback: use first 30 chars of original title
+    return titleTh.slice(0, 30).replace(/\s+/g, '-').replace(/[./\\:]/g, '');
   }
 
   return 'unknown';

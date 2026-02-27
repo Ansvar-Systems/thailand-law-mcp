@@ -1,0 +1,51 @@
+{
+  "id": "sec-be2535",
+  "type": "statute",
+  "title_th": "พระราชบัญญัติหลักทรัพย์และตลาดหลักทรัพย์ พ.ศ. 2535",
+  "title_en": "Securities and Exchange Act B.E. 2535 (1992)",
+  "short_name": "SEA 1992",
+  "status": "in_force",
+  "be_year": 2535,
+  "ce_year": 1992,
+  "issued_date": "1992-03-12",
+  "in_force_date": "1992-05-16",
+  "url": "https://searchlaw.ocs.go.th/council-of-state/#/public/doc/sec-be2535",
+  "description": "Thailand's principal securities regulation, establishing the Securities and Exchange Commission (SEC) and governing the offering, trading, and regulation of securities. Covers public offering of securities, securities companies, stock exchanges, derivatives trading, insider trading prohibitions, and market manipulation offences. Amended multiple times to address digital assets, crowdfunding, and modern financial instruments.",
+  "provisions": [
+    {
+      "provision_ref": "s1",
+      "section": "1",
+      "title": "Short title",
+      "content": "Section 1. This Act shall be called the Securities and Exchange Act, B.E. 2535 (1992).",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s14",
+      "section": "14",
+      "title": "Securities and Exchange Commission",
+      "content": "Section 14. There shall be the Securities and Exchange Commission consisting of the Minister of Finance as the chairperson, the Governor of the Bank of Thailand, the Permanent Secretary of the Ministry of Commerce, and not more than four to six experts appointed by the Cabinet. The Commission shall have the power to supervise, regulate, and develop the capital market.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s241",
+      "section": "241",
+      "title": "Insider trading prohibition",
+      "content": "Section 241. Any person who knows or possesses inside information shall not, whether directly or indirectly: (1) purchase, sell, or offer to purchase or sell securities to which the inside information relates, whether for his own account or for the account of another person; (2) disclose inside information to any other person while knowing or ought reasonably to know that the other person may purchase, sell, or offer to purchase or sell such securities; (3) give advice to any other person to purchase, sell, or offer to purchase or sell such securities.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s243",
+      "section": "243",
+      "title": "Market manipulation",
+      "content": "Section 243. No person shall commit any act which: (1) creates a misleading appearance of active trading of any securities on the stock exchange; (2) manipulates the price of any securities on the stock exchange; (3) disseminates or causes the dissemination of false or misleading information relating to securities, the issuer, or any material facts, which may affect the decision to buy or sell securities.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s281",
+      "section": "281",
+      "title": "Penalties for insider trading",
+      "content": "Section 281. Any person who violates Section 241 shall be punished with imprisonment for a term not exceeding two years, or a fine not exceeding two times the benefit received or the damage avoided as a result of the violation, or whichever is higher, but the fine shall not be less than five hundred thousand Baht, or both imprisonment and fine.",
+      "language": "en"
+    }
+  ]
+}

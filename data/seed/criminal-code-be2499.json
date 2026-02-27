@@ -1,0 +1,100 @@
+{
+  "id": "criminal-code-be2499",
+  "type": "statute",
+  "title_th": "ประมวลกฎหมายอาญา",
+  "title_en": "Criminal Code B.E. 2499 (1956)",
+  "short_name": "Criminal Code 1956",
+  "status": "in_force",
+  "be_year": 2499,
+  "ce_year": 1956,
+  "issued_date": "1956-11-13",
+  "in_force_date": "1957-01-01",
+  "url": "https://searchlaw.ocs.go.th/council-of-state/#/public/doc/criminal-code-be2499",
+  "description": "Thailand's comprehensive criminal code, enacted in B.E. 2499 (1956) and amended extensively. Covers general principles of criminal law (Book I), offences (Books II-III), and penalties. Divided into three main books: general principles, offences relating to the security and stability of the Kingdom and offences relating to public administration, and offences relating to person and property. Key provisions include offences against the monarch (Section 112, lese-majeste), national security, public order, and individual rights.",
+  "provisions": [
+    {
+      "provision_ref": "s1",
+      "section": "1",
+      "title": "Short title",
+      "content": "Section 1. This Act shall be called the Criminal Code.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s2",
+      "section": "2",
+      "title": "Principle of legality",
+      "content": "Section 2. A person shall be punished under a criminal law only when the act committed by such person is provided as an offence and the punishment is defined by the law in force at the time of the commission of such act, and the punishment to be imposed upon the offender shall not be heavier than that provided by the law in force at the time of the commission of the offence.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s59",
+      "section": "59",
+      "title": "Criminal intention",
+      "content": "Section 59. A person shall be criminally liable only when such person commits an act intentionally, except in the case where the law provides that such person must be liable when such person commits an act by negligence, or except in the case where the law clearly provides that such person must be liable even though such person commits an act unintentionally. To commit an act intentionally means to do an act consciously and at the same time the doer desires or foresees the result of such act. If the doer does not know the facts constituting the elements of the offence, it cannot be deemed that the doer desired or foresaw the result of such act.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s68",
+      "section": "68",
+      "title": "Self-defence",
+      "content": "Section 68. Any act done in the proper exercise of the right of self-defence of oneself or another, the right of defence of property of oneself or another, or the right of defence against any danger which is imminent and unjust, shall not be punishable if such act is reasonably necessary for the repulsion of such danger.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s112",
+      "section": "112",
+      "title": "Lese-majeste",
+      "content": "Section 112. Whoever defames, insults, or threatens the King, the Queen, the Heir-apparent, or the Regent, shall be punished with imprisonment of three to fifteen years.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s116",
+      "section": "116",
+      "title": "Sedition",
+      "content": "Section 116. Whoever makes an appearance to the public by words, writing, or any other means which is not an act within the purpose of the Constitution or is not for expressing an honest opinion or criticism in order: (1) to bring about a change in the laws of the country or the government by the use of force or violence; (2) to raise unrest and disaffection amongst the people in a manner likely to cause disturbance in the country; or (3) to cause the people to transgress the laws of the country; shall be punished with imprisonment not exceeding seven years.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s264",
+      "section": "264",
+      "title": "Forgery",
+      "content": "Section 264. Whoever makes a false document or alters a document in such a manner likely to cause injury to another person or the public shall be guilty of forgery and shall be punished with imprisonment not exceeding three years, or a fine not exceeding sixty thousand Baht, or both.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s334",
+      "section": "334",
+      "title": "Theft",
+      "content": "Section 334. Whoever dishonestly takes away a thing belonging to another person or which another person is the co-owner shall be guilty of theft and shall be punished with imprisonment not exceeding three years and a fine not exceeding sixty thousand Baht.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s341",
+      "section": "341",
+      "title": "Fraud",
+      "content": "Section 341. Whoever dishonestly deceives a person with the assertion of a falsehood or the concealment of the facts which should be revealed, and by such deception obtains the property from the person so deceived or a third person, or causes the person so deceived or a third person to execute, revoke, or destroy a document of rights, shall be guilty of cheating and shall be punished with imprisonment not exceeding three years, or a fine not exceeding sixty thousand Baht, or both.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s352",
+      "section": "352",
+      "title": "Criminal breach of trust",
+      "content": "Section 352. Whoever, being entrusted with the possession of any property, dishonestly converts such property to his own or a third person shall be guilty of criminal breach of trust and shall be punished with imprisonment not exceeding three years, or a fine not exceeding sixty thousand Baht, or both.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s362",
+      "section": "362",
+      "title": "Mischief",
+      "content": "Section 362. Whoever damages, destroys, renders useless, or renders unserviceable any property belonging to another person or which another person is co-owner, shall be punished with imprisonment not exceeding three years, or a fine not exceeding sixty thousand Baht, or both.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s388",
+      "section": "388",
+      "title": "Defamation",
+      "content": "Section 388. Whoever imputes anything to another person before a third person in a manner likely to impair the reputation of such other person, or to expose such other person to being hated or scorned, shall be guilty of defamation and shall be punished with imprisonment not exceeding one year, or a fine not exceeding twenty thousand Baht, or both.",
+      "language": "en"
+    }
+  ]
+}

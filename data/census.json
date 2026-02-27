@@ -1,40 +1,213 @@
 {
   "schema_version": "1.0",
   "jurisdiction": "TH",
-  "portal": "krisdika.go.th",
-  "generated": "2026-02-22",
-  "total_laws": 6,
-  "total_provisions": 71,
+  "jurisdiction_name": "Thailand",
+  "portal": "ocs.go.th",
+  "census_date": "2026-02-27",
+  "agent": "claude-opus-4-6",
+  "census_status": "partial",
+  "summary": {
+    "total_laws": 423,
+    "total_ingested": 14,
+    "total_provisions": 121,
+    "estimated_corpus_size": 600,
+    "corpus_coverage_pct": 70.5,
+    "in_force": 221,
+    "repealed": 202,
+    "metadata_only": 409,
+    "ingestable": 423,
+    "ocr_needed": 0,
+    "inaccessible": 0,
+    "excluded": 0
+  },
+  "notes": "423 กฎหมายไทยจากฐานข้อมูลสำนักงานคณะกรรมการกฤษฎีกา (ocs.go.th) — 409 รายการค้นพบผ่าน OCS Search API (มีเฉพาะ metadata) + 14 กฎหมายหลักที่มีบทบัญญัติครบ (121 มาตรา จากไฟล์ seed ที่จัดทำด้วยมือ) บทบัญญัติปัจจุบันเป็นคำแปลภาษาอังกฤษ — ต้องแทนที่ด้วยต้นฉบับภาษาไทยจาก ocs.go.th แต่พอร์ทัลใหม่ใช้ Angular SPA ที่ต้องมี session auth สำหรับ API backend ทำให้ดึงเนื้อหาเต็มอัตโนมัติไม่ได้ การค้นหา (Discovery Phase) ทำงานปกติ — ดึงรายชื่อกฎหมาย 409 ฉบับจาก OCS Search API ได้สำเร็จ",
+  "gaps": {
+    "discovery": "ทำงานปกติ — OCS Search API คืนผลลัพธ์ 409 กฎหมาย ค้นด้วยตัวอักษรไทยทั้งหมด",
+    "content_fetch": "ocs.go.th ใช้ Angular SPA พร้อม session-gated backend — ไม่สามารถดึงเนื้อหาเต็มอัตโนมัติได้ ต้อง reverse-engineer API หรือใช้ VPN pipeline",
+    "language": "บทบัญญัติ 121 มาตราจาก 14 seed files เป็นคำแปลภาษาอังกฤษ — ต้องแทนที่ด้วยต้นฉบับภาษาไทย"
+  },
   "laws": [
+    {
+      "id": "amla-be2542",
+      "title": "พระราชบัญญัติป้องกันและปราบปรามการฟอกเงิน พ.ศ. 2542",
+      "title_en": "Anti-Money Laundering Act B.E. 2542 (1999)",
+      "url": "https://searchlaw.ocs.go.th/council-of-state/#/public/doc/amla-be2542",
+      "status": "in_force",
+      "category": "federal_law",
+      "classification": "ingestable",
+      "classification_reason": "Seed file พร้อมบทบัญญัติ",
+      "ingested": true,
+      "provision_count": 9,
+      "ingestion_date": "2026-02-27"
+    },
     {
       "id": "cca-be2550",
       "title": "พระราชบัญญัติว่าด้วยการกระทำความผิดเกี่ยวกับคอมพิวเตอร์ พ.ศ. 2550",
-      "provisions": 15
+      "title_en": "Computer Crime Act B.E. 2550 (2007)",
+      "url": "https://www.krisdika.go.th/librarian/getfile?sysid=564700&fid=1&subfid=0",
+      "status": "in_force",
+      "category": "federal_law",
+      "classification": "ingestable",
+      "classification_reason": "Seed file พร้อมบทบัญญัติ",
+      "ingested": true,
+      "provision_count": 15,
+      "ingestion_date": "2026-02-22"
     },
     {
       "id": "ccc-be2468",
       "title": "ประมวลกฎหมายแพ่งและพาณิชย์",
-      "provisions": 10
+      "title_en": "Civil and Commercial Code B.E. 2468 (1925)",
+      "url": "https://www.krisdika.go.th/librarian/getfile?sysid=420780&fid=1&subfid=0",
+      "status": "in_force",
+      "category": "federal_law",
+      "classification": "ingestable",
+      "classification_reason": "Seed file พร้อมบทบัญญัติ",
+      "ingested": true,
+      "provision_count": 10,
+      "ingestion_date": "2026-02-22"
     },
     {
       "id": "constitution-be2560",
       "title": "รัฐธรรมนูญแห่งราชอาณาจักรไทย พ.ศ. 2560",
-      "provisions": 8
+      "title_en": "Constitution of the Kingdom of Thailand B.E. 2560 (2017)",
+      "url": "https://www.krisdika.go.th/librarian/getfile?sysid=758064&fid=1&subfid=0",
+      "status": "in_force",
+      "category": "federal_law",
+      "classification": "ingestable",
+      "classification_reason": "Seed file พร้อมบทบัญญัติ",
+      "ingested": true,
+      "provision_count": 8,
+      "ingestion_date": "2026-02-22"
+    },
+    {
+      "id": "criminal-code-be2499",
+      "title": "ประมวลกฎหมายอาญา",
+      "title_en": "Criminal Code B.E. 2499 (1956)",
+      "url": "https://searchlaw.ocs.go.th/council-of-state/#/public/doc/criminal-code-be2499",
+      "status": "in_force",
+      "category": "federal_law",
+      "classification": "ingestable",
+      "classification_reason": "Seed file พร้อมบทบัญญัติ",
+      "ingested": true,
+      "provision_count": 12,
+      "ingestion_date": "2026-02-27"
     },
     {
       "id": "csa-be2562",
       "title": "พระราชบัญญัติการรักษาความมั่นคงปลอดภัยไซเบอร์ พ.ศ. 2562",
-      "provisions": 10
+      "title_en": "Cybersecurity Act B.E. 2562 (2019)",
+      "url": "https://www.krisdika.go.th/librarian/getfile?sysid=793776&fid=1&subfid=0",
+      "status": "in_force",
+      "category": "federal_law",
+      "classification": "ingestable",
+      "classification_reason": "Seed file พร้อมบทบัญญัติ",
+      "ingested": true,
+      "provision_count": 10,
+      "ingestion_date": "2026-02-22"
+    },
+    {
+      "id": "deb-be2560",
+      "title": "พระราชบัญญัติการพัฒนาดิจิทัลเพื่อเศรษฐกิจและสังคม พ.ศ. 2560",
+      "title_en": "Digital Economy and Society Development Act B.E. 2560 (2017)",
+      "url": "https://searchlaw.ocs.go.th/council-of-state/#/public/doc/deb-be2560",
+      "status": "in_force",
+      "category": "federal_law",
+      "classification": "ingestable",
+      "classification_reason": "Seed file พร้อมบทบัญญัติ",
+      "ingested": true,
+      "provision_count": 3,
+      "ingestion_date": "2026-02-27"
+    },
+    {
+      "id": "ecd-be2562",
+      "title": "พระราชกำหนดการประกอบธุรกิจสินทรัพย์ดิจิทัล พ.ศ. 2561",
+      "title_en": "Emergency Decree on Digital Asset Businesses B.E. 2561 (2018)",
+      "url": "https://searchlaw.ocs.go.th/council-of-state/#/public/doc/ecd-be2561",
+      "status": "in_force",
+      "category": "federal_law",
+      "classification": "ingestable",
+      "classification_reason": "Seed file พร้อมบทบัญญัติ",
+      "ingested": true,
+      "provision_count": 6,
+      "ingestion_date": "2026-02-27"
     },
     {
       "id": "eta-be2544",
       "title": "พระราชบัญญัติว่าด้วยธุรกรรมทางอิเล็กทรอนิกส์ พ.ศ. 2544",
-      "provisions": 12
+      "title_en": "Electronic Transactions Act B.E. 2544 (2001)",
+      "url": "https://www.krisdika.go.th/librarian/getfile?sysid=449138&fid=1&subfid=0",
+      "status": "in_force",
+      "category": "federal_law",
+      "classification": "ingestable",
+      "classification_reason": "Seed file พร้อมบทบัญญัติ",
+      "ingested": true,
+      "provision_count": 12,
+      "ingestion_date": "2026-02-22"
+    },
+    {
+      "id": "nca-be2543",
+      "title": "พระราชบัญญัติว่าด้วยการกระทำความผิดเกี่ยวกับคอมพิวเตอร์ (ฉบับที่ 2) พ.ศ. 2560",
+      "title_en": "Computer Crime Act (No. 2) B.E. 2560 (2017)",
+      "url": "https://searchlaw.ocs.go.th/council-of-state/#/public/doc/cca-no2-be2560",
+      "status": "in_force",
+      "category": "federal_law",
+      "classification": "ingestable",
+      "classification_reason": "Seed file พร้อมบทบัญญัติ",
+      "ingested": true,
+      "provision_count": 3,
+      "ingestion_date": "2026-02-27"
+    },
+    {
+      "id": "opa-be2560",
+      "title": "พระราชบัญญัติการบริหารงานและการให้บริการภาครัฐผ่านระบบดิจิทัล พ.ศ. 2562",
+      "title_en": "Government Digital Services Act B.E. 2562 (2019)",
+      "url": "https://searchlaw.ocs.go.th/council-of-state/#/public/doc/opa-be2562",
+      "status": "in_force",
+      "category": "federal_law",
+      "classification": "ingestable",
+      "classification_reason": "Seed file พร้อมบทบัญญัติ",
+      "ingested": true,
+      "provision_count": 5,
+      "ingestion_date": "2026-02-27"
     },
     {
       "id": "pdpa-be2562",
       "title": "พระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562",
-      "provisions": 16
+      "title_en": "Personal Data Protection Act B.E. 2562 (2019)",
+      "url": "https://www.krisdika.go.th/librarian/getfile?sysid=793775&fid=1&subfid=0",
+      "status": "in_force",
+      "category": "federal_law",
+      "classification": "ingestable",
+      "classification_reason": "Seed file พร้อมบทบัญญัติ",
+      "ingested": true,
+      "provision_count": 16,
+      "ingestion_date": "2026-02-22"
+    },
+    {
+      "id": "sec-be2535",
+      "title": "พระราชบัญญัติหลักทรัพย์และตลาดหลักทรัพย์ พ.ศ. 2535",
+      "title_en": "Securities and Exchange Act B.E. 2535 (1992)",
+      "url": "https://searchlaw.ocs.go.th/council-of-state/#/public/doc/sec-be2535",
+      "status": "in_force",
+      "category": "federal_law",
+      "classification": "ingestable",
+      "classification_reason": "Seed file พร้อมบทบัญญัติ",
+      "ingested": true,
+      "provision_count": 5,
+      "ingestion_date": "2026-02-27"
+    },
+    {
+      "id": "telecom-be2544",
+      "title": "พระราชบัญญัติการประกอบกิจการโทรคมนาคม พ.ศ. 2544",
+      "title_en": "Telecommunications Business Act B.E. 2544 (2001)",
+      "url": "https://searchlaw.ocs.go.th/council-of-state/#/public/doc/telecom-be2544",
+      "status": "in_force",
+      "category": "federal_law",
+      "classification": "ingestable",
+      "classification_reason": "Seed file พร้อมบทบัญญัติ",
+      "ingested": true,
+      "provision_count": 7,
+      "ingestion_date": "2026-02-27"
     }
   ]
 }

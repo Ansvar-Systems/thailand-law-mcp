@@ -1,0 +1,65 @@
+{
+  "id": "telecom-be2544",
+  "type": "statute",
+  "title_th": "พระราชบัญญัติการประกอบกิจการโทรคมนาคม พ.ศ. 2544",
+  "title_en": "Telecommunications Business Act B.E. 2544 (2001)",
+  "short_name": "Telecom Act 2001",
+  "status": "in_force",
+  "be_year": 2544,
+  "ce_year": 2001,
+  "issued_date": "2001-11-15",
+  "in_force_date": "2001-11-16",
+  "url": "https://searchlaw.ocs.go.th/council-of-state/#/public/doc/telecom-be2544",
+  "description": "Thailand's principal telecommunications regulatory law governing the operation of telecommunications businesses. Establishes the licensing framework for telecommunications operators (Type 1, 2, and 3 licences), consumer protection requirements, interconnection obligations, and the regulatory authority of the National Broadcasting and Telecommunications Commission (NBTC). Amended to reflect market liberalisation and convergence of broadcasting and telecommunications regulation.",
+  "provisions": [
+    {
+      "provision_ref": "s1",
+      "section": "1",
+      "title": "Short title",
+      "content": "Section 1. This Act shall be called the Telecommunications Business Act, B.E. 2544 (2001).",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s3",
+      "section": "3",
+      "title": "Definitions",
+      "content": "Section 3. In this Act: 'telecommunications' means any emission, transmission, or reception of signs, signals, characters, images, sounds, or information of any nature by wire, radio, optical, or other electromagnetic systems; 'telecommunications business' means the provision of telecommunications services for the general public, whether by telecommunications network, telecommunications equipment, or both; 'telecommunications network' means a telecommunications transmission system, including associated equipment, which is used for the provision of telecommunications services; 'licensee' means a person who has been granted a licence to operate a telecommunications business under this Act.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s7",
+      "section": "7",
+      "title": "Licensing requirement",
+      "content": "Section 7. No person shall operate a telecommunications business unless granted a licence by the Commission. Licences shall be of the following types: (1) Type One — for telecommunications business which does not use telecommunications network infrastructure and which is not significantly competitive; (2) Type Two — for telecommunications business using telecommunications network infrastructure with or without its own network; (3) Type Three — for telecommunications business using telecommunications network infrastructure which may have significant impact on fair competition or the public interest.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s17",
+      "section": "17",
+      "title": "Interconnection obligations",
+      "content": "Section 17. A licensee operating a telecommunications network shall allow other licensees to interconnect with its network on fair, reasonable, and non-discriminatory terms. The interconnection charges shall be based on cost-oriented pricing as determined by the Commission.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s20",
+      "section": "20",
+      "title": "Consumer protection",
+      "content": "Section 20. A licensee shall provide telecommunications services to users in a fair manner and shall not discriminate against any user without justification. The licensee shall inform users of the terms and conditions of service, including service charges, prior to providing the service.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s26",
+      "section": "26",
+      "title": "Confidentiality of communications",
+      "content": "Section 26. A licensee shall protect the confidentiality of the content and details of telecommunications of users. The licensee shall not disclose, publicise, or use such information for purposes other than the provision of telecommunications services unless the user has given consent or as permitted by law.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s64",
+      "section": "64",
+      "title": "Penalties for operating without licence",
+      "content": "Section 64. Any person who operates a telecommunications business without a licence under Section 7 shall be punished with imprisonment for a term not exceeding five years, or a fine not exceeding ten million Baht, or both, and an additional fine not exceeding one hundred thousand Baht per day throughout the period of the offence.",
+      "language": "en"
+    }
+  ]
+}

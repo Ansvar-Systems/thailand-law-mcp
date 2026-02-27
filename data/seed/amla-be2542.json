@@ -1,0 +1,79 @@
+{
+  "id": "amla-be2542",
+  "type": "statute",
+  "title_th": "พระราชบัญญัติป้องกันและปราบปรามการฟอกเงิน พ.ศ. 2542",
+  "title_en": "Anti-Money Laundering Act B.E. 2542 (1999)",
+  "short_name": "AMLA 1999",
+  "status": "in_force",
+  "be_year": 2542,
+  "ce_year": 1999,
+  "issued_date": "1999-04-10",
+  "in_force_date": "1999-08-19",
+  "url": "https://searchlaw.ocs.go.th/council-of-state/#/public/doc/amla-be2542",
+  "description": "Thailand's anti-money laundering framework establishing the Anti-Money Laundering Office (AMLO) as the principal enforcement authority. Defines predicate offences, reporting obligations for financial institutions and designated non-financial businesses, suspicious transaction reporting, and asset forfeiture procedures. Amended multiple times, most recently in B.E. 2558 (2015) to align with FATF recommendations.",
+  "provisions": [
+    {
+      "provision_ref": "s1",
+      "section": "1",
+      "title": "Short title",
+      "content": "Section 1. This Act shall be called the Anti-Money Laundering Act, B.E. 2542 (1999).",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s3",
+      "section": "3",
+      "title": "Definitions",
+      "content": "Section 3. In this Act: 'money laundering offence' means the commission of any act in connection with property related to the commission of a predicate offence: (1) transferring, receiving, or changing property which has been derived from the commission of a predicate offence for the purpose of concealing or disguising the nature, source, location, movement, or ownership of such property; (2) acting in any manner to conceal or disguise the true nature, source, location, movement, or ownership of property derived from the commission of a predicate offence; 'predicate offence' means any offence specified in Section 3; 'property' means money, assets, or any other benefit, whether corporeal or incorporeal, movable or immovable, or any documents of title or instruments conferring rights therein.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s5",
+      "section": "5",
+      "title": "Money laundering offence",
+      "content": "Section 5. Any person who: (1) transfers, converts, or moves property connected with the commission of a predicate offence for the purpose of concealing or disguising the origin of the property or for the purpose of assisting another person involved in the commission of a predicate offence to evade the legal consequences of his action; (2) conceals or disguises the true nature, source, location, disposition, movement, or ownership of or rights with respect to property connected with the commission of a predicate offence; (3) acquires, possesses, or uses property knowing at the time of receipt that the property is connected with the commission of a predicate offence; shall be guilty of a money laundering offence.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s13",
+      "section": "13",
+      "title": "Reporting obligations",
+      "content": "Section 13. The following persons shall report to the Anti-Money Laundering Office: (1) financial institutions; (2) persons carrying on the business of life insurance; (3) persons carrying on the business of a securities company, mutual fund management company, or private fund management company; (4) persons carrying on the business of a credit foncier; (5) persons carrying on the business of a finance company or a company that has been granted permission to carry on finance business; (6) persons carrying on the business of buying and selling foreign currency; (7) persons carrying on the business of electronic money transfer or remittance; (8) other persons as prescribed by Ministerial Regulation.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s16",
+      "section": "16",
+      "title": "Suspicious transaction reporting",
+      "content": "Section 16. When a person required to report under Section 13 suspects or has reasonable grounds to suspect that any transaction is connected with the commission of a predicate offence, such person shall report the transaction to the Anti-Money Laundering Office within three days from the date of such suspicion, together with details of the transaction, the identity of the persons involved, and the grounds for the suspicion.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s34",
+      "section": "34",
+      "title": "Transaction committee",
+      "content": "Section 34. There shall be a Transaction Committee consisting of the Secretary-General of the Anti-Money Laundering Board as the chairperson and other members appointed by the Anti-Money Laundering Board. The Transaction Committee shall have the power and duties to examine and analyse reports and information received by the Office, and to order seizure or freezing of property where there are reasonable grounds to believe that property is connected with the commission of a predicate offence.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s49",
+      "section": "49",
+      "title": "Civil forfeiture",
+      "content": "Section 49. Where there are reasonable grounds to believe that any property is connected with the commission of a predicate offence, the Secretary-General shall file a petition to the court for an order forfeiting such property to the State. The court shall issue an order for forfeiture of property if it is satisfied on the balance of probabilities that such property is connected with the commission of a predicate offence.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s60",
+      "section": "60",
+      "title": "Penalties for non-reporting",
+      "content": "Section 60. Any person required to report under Section 13 who fails to comply shall be punished with a fine not exceeding five hundred thousand Baht and a further fine not exceeding five thousand Baht per day throughout the period during which the non-compliance continues.",
+      "language": "en"
+    },
+    {
+      "provision_ref": "s62",
+      "section": "62",
+      "title": "Penalties for money laundering",
+      "content": "Section 62. Any person who commits a money laundering offence under Section 5 shall be punished with imprisonment for a term of one to ten years, or a fine of twenty thousand to two hundred thousand Baht, or both.",
+      "language": "en"
+    }
+  ]
+}
