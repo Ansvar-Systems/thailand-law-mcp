@@ -8,7 +8,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/Ansvar-Systems/Thailand-law-mcp?style=social)](https://github.com/Ansvar-Systems/Thailand-law-mcp)
 [![CI](https://github.com/Ansvar-Systems/Thailand-law-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/Ansvar-Systems/Thailand-law-mcp/actions/workflows/ci.yml)
 
-Query **Thai legislation** -- covering data protection, cybersecurity, corporate law, and more -- directly from Claude, Cursor, or any MCP-compatible client.
+Query **517 Thai statutes** with **18,184 provisions** -- from the Personal Data Protection Act and Cybersecurity Act to the Computer Crime Act -- directly from Claude, Cursor, or any MCP-compatible client.
 
 If you're building legal tech, compliance tools, or doing Thai legal research, this is your verified reference database.
 
@@ -120,6 +120,19 @@ Once connected, just ask naturally:
 - *"Which Thai laws implement the GDPR?"*
 - *"Validate this legal citation"*
 - *"Build a legal stance on data breach notification requirements"*
+
+---
+
+## What's Included
+
+| Category | Count | Details |
+|----------|-------|---------|
+| **Statutes** | 517 statutes | Thai legislation with provisions |
+| **Provisions** | 18,184 sections | Full-text searchable with FTS5 |
+| **EU Cross-References** | 3 references | GDPR, NIS Directive mappings |
+| **Database Size** | ~45 MB | Optimized SQLite, portable |
+
+**Verified data only** -- every citation is validated against official sources (OCS/Krisdika). Zero LLM-generated content.
 
 ---
 
