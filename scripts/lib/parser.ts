@@ -234,12 +234,19 @@ export function parseActContent(html: string, language: 'th' | 'en' = 'th'): Par
 
 /**
  * Build a document ID from act information.
- * Format: abbreviation-beYear (e.g., "pdpa-be2562")
+ * Uses sysId (timelineId) as the unique suffix to prevent collisions.
+ * Format: abbreviation-beYear-sysId (e.g., "pdpa-be2562-abc123")
  */
-export function buildDocumentId(titleEn: string, titleTh: string, beYear: number): string {
-  // Try to derive an abbreviation from the English title
+export function buildDocumentId(titleEn: string, titleTh: string, beYear: number, sysId?: string): string {
   const abbreviation = deriveAbbreviation(titleEn, titleTh);
-  return `${abbreviation}-be${beYear}`.toLowerCase();
+  const base = `${abbreviation}-be${beYear}`.toLowerCase();
+  // Append sysId to guarantee uniqueness — Thai title truncation caused 204+ collisions
+  if (sysId) {
+    // Use last 8 chars of sysId (encoded timelineId) as a short unique suffix
+    const suffix = sysId.slice(-8).replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+    return `${base}-${suffix}`;
+  }
+  return base;
 }
 
 /**
