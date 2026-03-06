@@ -17,6 +17,7 @@ type Db = InstanceType<typeof Database>;
 interface DocRow {
   id: string;
   title: string;
+  title_en: string | null;
   short_name: string | null;
 }
 
@@ -67,7 +68,7 @@ function normalizePunctuation(s: string): string {
 function getAllDocs(db: Db): DocRow[] {
   if (!allDocsCache) {
     allDocsCache = db.prepare(
-      'SELECT id, title, short_name FROM legal_documents',
+      'SELECT id, title, title_en, short_name FROM legal_documents',
     ).all() as DocRow[];
   }
   return allDocsCache;
@@ -148,10 +149,10 @@ export function resolveDocumentId(
   // -----------------------------------------------------------------------
   const normalized = normalizeActTitle(trimmed);
 
-  // 4a: exact match on normalised input
+  // 4a: exact match on normalised input (title or title_en)
   const exactTitle = db.prepare(
-    'SELECT id FROM legal_documents WHERE LOWER(title) = LOWER(?)',
-  ).get(normalized) as { id: string } | undefined;
+    'SELECT id FROM legal_documents WHERE LOWER(title) = LOWER(?) OR LOWER(title_en) = LOWER(?)',
+  ).get(normalized, normalized) as { id: string } | undefined;
   if (exactTitle) return exactTitle.id;
 
   // 4b: try with trailing year stripped from stored titles
@@ -161,22 +162,29 @@ export function resolveDocumentId(
   for (const doc of docs) {
     const storedBase = doc.title.replace(/,?\s*\d{4}\s*$/, '').toLowerCase();
     if (storedBase === lowerNormalized) return doc.id;
+    if (doc.title_en) {
+      const storedBaseEn = doc.title_en.replace(/,?\s*\d{4}\s*$/, '').toLowerCase();
+      if (storedBaseEn === lowerNormalized) return doc.id;
+    }
   }
 
   // -----------------------------------------------------------------------
-  // Step 5 — Shortest LIKE match (case-sensitive on title)
+  // Step 5 — Shortest LIKE match (case-sensitive on title or title_en)
   // -----------------------------------------------------------------------
-  const likeMatches = docs.filter(d => d.title.includes(normalized));
+  const likeMatches = docs.filter(
+    d => d.title.includes(normalized) || (d.title_en && d.title_en.includes(normalized)),
+  );
   if (likeMatches.length > 0) {
     likeMatches.sort((a, b) => a.title.length - b.title.length);
     return likeMatches[0]!.id;
   }
 
   // -----------------------------------------------------------------------
-  // Step 6 — Case-insensitive shortest LIKE on title
+  // Step 6 — Case-insensitive shortest LIKE on title or title_en
   // -----------------------------------------------------------------------
   const lowerLikeMatches = docs.filter(
-    d => d.title.toLowerCase().includes(lowerNormalized),
+    d => d.title.toLowerCase().includes(lowerNormalized)
+      || (d.title_en && d.title_en.toLowerCase().includes(lowerNormalized)),
   );
   if (lowerLikeMatches.length > 0) {
     lowerLikeMatches.sort((a, b) => a.title.length - b.title.length);
@@ -200,7 +208,12 @@ export function resolveDocumentId(
   const puncNormalized = normalizePunctuation(lowerNormalized);
   const puncMatches = docs.filter(d => {
     const puncTitle = normalizePunctuation(d.title.toLowerCase());
-    return puncTitle.includes(puncNormalized);
+    if (puncTitle.includes(puncNormalized)) return true;
+    if (d.title_en) {
+      const puncTitleEn = normalizePunctuation(d.title_en.toLowerCase());
+      if (puncTitleEn.includes(puncNormalized)) return true;
+    }
+    return false;
   });
   if (puncMatches.length > 0) {
     puncMatches.sort((a, b) => a.title.length - b.title.length);
