@@ -344,8 +344,37 @@ export const TOOLS: Tool[] = [
   },
 ];
 
-export function buildTools(context?: AboutContext): Tool[] {
-  return context ? [...TOOLS, ABOUT_TOOL] : TOOLS;
+const EU_TOOL_NAMES = new Set([
+  'get_eu_basis',
+  'get_thai_implementations',
+  'search_eu_implementations',
+  'get_provision_eu_basis',
+  'validate_eu_compliance',
+]);
+
+export function buildTools(db?: InstanceType<typeof Database>, context?: AboutContext): Tool[] {
+  let hasEuData = false;
+
+  if (db) {
+    // Check if EU reference tables exist AND have data
+    try {
+      const row = db.prepare('SELECT COUNT(*) as cnt FROM eu_references').get() as { cnt: number };
+      if (row.cnt > 0) hasEuData = true;
+    } catch {
+      // Table doesn't exist — EU tools will be hidden
+    }
+  }
+
+  const tools = TOOLS.filter(t => {
+    if (EU_TOOL_NAMES.has(t.name) && !hasEuData) return false;
+    return true;
+  });
+
+  if (context) {
+    tools.push(ABOUT_TOOL);
+  }
+
+  return tools;
 }
 
 export function registerTools(
@@ -353,7 +382,7 @@ export function registerTools(
   db: InstanceType<typeof Database>,
   context?: AboutContext,
 ): void {
-  const allTools = buildTools(context);
+  const allTools = buildTools(db, context);
 
   server.setRequestHandler(ListToolsRequestSchema, async () => {
     return { tools: allTools };
@@ -382,7 +411,7 @@ export function registerTools(
           result = await buildLegalStance(db, args as unknown as BuildLegalStanceInput);
           break;
         case 'format_citation':
-          result = await formatCitationTool(args as unknown as FormatCitationInput);
+          result = await formatCitationTool(db, args as unknown as FormatCitationInput);
           break;
         case 'check_currency':
           result = await checkCurrency(db, args as unknown as CheckCurrencyInput);
