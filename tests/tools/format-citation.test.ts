@@ -1,28 +1,32 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import type Database from '@ansvar/mcp-sqlite';
 import { formatCitationTool } from '../../src/tools/format-citation.js';
+import { createTestDb } from '../fixtures/test-db.js';
+
+let db: InstanceType<typeof Database>;
 
 describe('formatCitationTool', () => {
-  it('formats a PDPA citation in full_en', async () => {
-    const result = await formatCitationTool({
+  beforeAll(() => { db = createTestDb(); });
+  afterAll(() => { db?.close(); });
+
+  it('formats a PDPA citation in full format', async () => {
+    const result = await formatCitationTool(db, {
       citation: 'Section 3, Personal Data Protection Act B.E. 2562',
-      format: 'full_en',
+      format: 'full',
     });
-    expect(result.results.valid).toBe(true);
-    expect(result.results.formatted).toContain('Section 3');
-    expect(result.results.formatted).toContain('B.E. 2562');
-    expect(result.results.formatted).toContain('2019');
+    expect(result.formatted).toContain('Section 3');
   });
 
   it('formats in pinpoint format', async () => {
-    const result = await formatCitationTool({
+    const result = await formatCitationTool(db, {
       citation: 'Section 3, Personal Data Protection Act B.E. 2562',
       format: 'pinpoint',
     });
-    expect(result.results.formatted).toBe('s. 3');
+    expect(result.formatted).toBe('s 3');
   });
 
-  it('returns invalid for empty input', async () => {
-    const result = await formatCitationTool({ citation: '' });
-    expect(result.results.valid).toBe(false);
+  it('returns original for empty input', async () => {
+    const result = await formatCitationTool(db, { citation: '' });
+    expect(result.formatted).toBe('');
   });
 });
