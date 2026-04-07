@@ -117,6 +117,15 @@ export async function getProvision(
 
   return {
     results: row,
+    _citation: buildProvisionCitation(
+      row.document_id,
+      row.document_title || '',
+      row.provision_ref || '',
+      input.document_id,
+      input.section || input.provision_ref || '',
+      null,
+      null,
+    ),
     _metadata: generateResponseMetadata(db)
   };
 }
